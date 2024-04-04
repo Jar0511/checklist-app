@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import viteLogo from '/vite.svg'
 import { supabase } from '@/shared/api'
+import './index.css'
 
 function App() {
   const [count, setCount] = useState(0)
