@@ -36,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:0.4.6"],\
+          ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
@@ -1765,6 +1766,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:0.4.6"],\
+          ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
@@ -2381,6 +2383,37 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/fraction.js-npm-4.3.7-c2c7e95a8e-df291391be.zip/node_modules/fraction.js/",\
         "packageDependencies": [\
           ["fraction.js", "npm:4.3.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["framer-motion", [\
+      ["npm:11.0.24", {\
+        "packageLocation": "./.yarn/cache/framer-motion-npm-11.0.24-3f7fa21e0a-8d884a828e.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "npm:11.0.24"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24", {\
+        "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-976ee739ba/0/cache/framer-motion-npm-11.0.24-3f7fa21e0a-8d884a828e.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
+          ["@emotion/is-prop-valid", null],\
+          ["@types/emotion__is-prop-valid", null],\
+          ["@types/react", "npm:18.2.74"],\
+          ["@types/react-dom", "npm:18.2.24"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@emotion/is-prop-valid",\
+          "@types/emotion__is-prop-valid",\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4173,6 +4206,15 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/typescript",\
           "typescript"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tslib", [\
+      ["npm:2.6.2", {\
+        "packageLocation": "./.yarn/cache/tslib-npm-2.6.2-4fc8c068d9-e03a8a4271.zip/node_modules/tslib/",\
+        "packageDependencies": [\
+          ["tslib", "npm:2.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
