@@ -37,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:0.4.6"],\
           ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
+          ["jotai", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:2.7.2"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
@@ -1767,6 +1768,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:0.4.6"],\
           ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
+          ["jotai", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:2.7.2"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
@@ -2820,6 +2822,28 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/jiti-npm-1.21.0-baebd5985a-7f361219fe.zip/node_modules/jiti/",\
         "packageDependencies": [\
           ["jiti", "npm:1.21.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["jotai", [\
+      ["npm:2.7.2", {\
+        "packageLocation": "./.yarn/cache/jotai-npm-2.7.2-de2d51a040-247f6a38de.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "npm:2.7.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:2.7.2", {\
+        "packageLocation": "./.yarn/__virtual__/jotai-virtual-aad4f60acb/0/cache/jotai-npm-2.7.2-de2d51a040-247f6a38de.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:2.7.2"],\
+          ["@types/react", "npm:18.2.74"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
