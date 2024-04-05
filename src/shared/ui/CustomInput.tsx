@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, forwardRef } from "react";
-import Callout from "./Callout";
+import { Callout } from ".";
 
-const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>((prop, ref) => {
+export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>((prop, ref) => {
   return (
     <div className="inline-flex flex-col gap-y-1">
       {
@@ -29,6 +29,4 @@ const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputEl
       />
     </div>
   )
-})
-
-export default CustomInput;
+});
