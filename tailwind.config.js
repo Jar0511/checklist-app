@@ -6,7 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      Pretendard: ["Pretendard", 'sans-serif']
+    }
   },
   plugins: [],
 }
-
