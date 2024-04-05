@@ -26,5 +26,29 @@ export default {
       Pretendard: ["Pretendard", 'sans-serif']
     }
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtils = {
+        '.number-appearance-none': {
+          '-moz-appearance': 'textfield',
+          '&::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            'margin': '0',
+          },
+          '&::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+            'margin': '0',
+          },
+        },
+        '.color-appearance-none': {
+          'appearance': 'none',
+          '-webkit-appearance': 'none',
+          '-moz-appearance': 'none',
+          "background-color": 'transparent'
+        }
+      };
+
+      addUtilities(newUtils, ['responsive']);
+    },
+  ],
 }
