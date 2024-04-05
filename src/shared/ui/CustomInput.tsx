@@ -17,6 +17,11 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
         {...prop}
         ref={ref}
         type={prop.type ?? "text"}
+        placeholder={
+          prop.placeholder ??
+          prop.type == "email" ? "이메일을 입력하세요" :
+          prop.type == "password" ? "비밀번호를 입력하세요" : ""
+        }
         className={`${
           prop.className ?? ''
         } ${
