@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { supabase } from '@/shared/api'
 import { Outlet } from 'react-router-dom'
 
-function App() {
+export function App() {
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       console.log(event, session);
@@ -17,5 +17,3 @@ function App() {
     </section>
   )
 }
-
-export default App
