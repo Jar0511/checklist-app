@@ -7,7 +7,7 @@
 checklist-app은 다음과 같은 스펙으로 만들어갈 예정이다
 
 - design pattern: FSD(Feature Sliced Design)
-- UI: react, tailwindcss, framer-motion
+- UI: react, tailwindcss, framer-motion, react-icons
 - lang: typescript
 - build tool: vite
 - routing: react-router
