@@ -1,5 +1,7 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+import { ButtonHTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
 import { Callout } from ".";
+
+// 컴포넌트화한 HTML 엘리먼트
 
 export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>((prop, ref) => {
   return (
@@ -35,3 +37,16 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
     </div>
   )
 });
+
+export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>((prop, ref) => {
+  return (
+    <button
+      {...prop}
+      type={prop.type ?? "button"}
+      ref={ref}
+      title={prop.title ?? (typeof prop.children == "string" ? prop.children : 'click')}
+    >
+      {prop.children}
+    </button>
+  )
+})
