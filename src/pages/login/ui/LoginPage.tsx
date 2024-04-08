@@ -5,7 +5,7 @@ import { CustomLink } from "@/shared/ui/CustomElements"
 export const LoginPage = () => {
   return (
     <div className="flex w-screen h-screen">
-      <div className="relative flex flex-1 text-sm text-white bg-grapefruit-300">
+      <div className="relative flex flex-1 text-sm dark:text-stone-50 text-stone-900 bg-grapefruit-300 dark:bg-grapefruit-500/25">
         <div className="absolute flex items-center justify-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
           <div className="relative inline-block">
             <img

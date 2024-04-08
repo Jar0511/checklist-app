@@ -122,9 +122,9 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<H
             btncolor == "tertiary" ?
             (
               dim ?
-              ''
+              'bg-purple-400/50 hover:bg-purple-400/70'
               :
-              ''
+              'bg-purple-500 hover:bg-purple-600 dark:hover:bg-purple-400'
             )
             :
             ''

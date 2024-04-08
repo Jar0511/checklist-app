@@ -14,24 +14,24 @@ export const LoginForm = () => {
 
   return (
     <form
-      className="flex flex-col gap-y-8"
+      className="flex flex-col gap-y-12"
       onSubmit={handleSubmit((result) => signInWithEmail(result).then(({data, error}) => {console.log("data",data); console.log("error", error)}))}
     >
       <h1 className="text-5xl font-bold">Login</h1>
-      <div className="flex flex-col gap-y-3">
-        <div className="flex flex-col gap-y-2">
-          <CustomInput type="email" {...emailRegister} />
-          <CustomInput type="password" {...passwordRegister} />
+      <div className="flex flex-col gap-y-8">
+        <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-2">
+            <CustomInput type="email" {...emailRegister} />
+            <CustomInput type="password" {...passwordRegister} />
+          </div>
+          <div className="flex items-stretch justify-between gap-x-3">
+            <CustomButton size="sm">비밀번호 잊음</CustomButton>
+            <CustomButton size="sm">회원 가입</CustomButton>
+          </div>
         </div>
-        <div className="flex items-stretch justify-between gap-x-3">
-          <CustomButton size="sm">비밀번호 잊음</CustomButton>
-          <CustomButton size="sm">회원 가입</CustomButton>
-        </div>
+        <CustomButton type="submit">제출</CustomButton>
       </div>
-      <CustomButton type="submit">제출</CustomButton>
-      <CustomButton type="submit" dim>제출</CustomButton>
-      <CustomButton type="submit" btncolor="secondary">제출</CustomButton>
-      <CustomButton type="submit" btncolor="secondary" dim>제출</CustomButton>
+
     </form>
   )
 }
