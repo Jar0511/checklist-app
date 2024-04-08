@@ -12,7 +12,6 @@ export const RegisterForm = () => {
   const passwordRegister = register("password");
   const nameRegister = register("display_name");
 
-
   return (
     <form onSubmit={handleSubmit((result) => signUpWithEmail(result))}>
       <CustomInput type="email" {...emailRegister} />

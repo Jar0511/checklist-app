@@ -1,6 +1,8 @@
 import { useAtom } from "jotai"
 import { currentThemeAtom } from "../model/store"
 import { useEffect } from "react";
+import { CustomButton } from "@/shared/ui";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 export const ThemeToggleButton = () => {
   const [theme, setTheme] = useAtom(currentThemeAtom);
@@ -13,6 +15,13 @@ export const ThemeToggleButton = () => {
     }
   }, [theme]);
   return (
-    <button onClick={() => setTheme(pre => pre == "light" ? "dark" : "light")}>click me</button>
+    <CustomButton
+      onClick={() => setTheme(pre => pre == "light" ? "dark" : "light")}
+      aria-label="toggle app theme"
+      size="lg"
+      btnstyle="fab"
+    >
+      {theme == "light" ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
+    </CustomButton>
   )
 }
