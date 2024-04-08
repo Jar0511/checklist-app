@@ -12,7 +12,7 @@ export function App() {
   }, []);
 
   return (
-    <section className='font-Pretendard'>
+    <section className='flex justify-center w-screen h-screen bg-white font-Pretendard text-neutral-900 dark:bg-stone-800 dark:text-stone-50'>
       <Outlet />
     </section>
   )
