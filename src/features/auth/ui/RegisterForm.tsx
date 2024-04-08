@@ -10,7 +10,7 @@ export const RegisterForm = () => {
   } = useForm<RegisterType>();
   const emailRegister = register("email");
   const passwordRegister = register("password");
-  const nameRegister = register("name");
+  const nameRegister = register("display_name");
 
 
   return (

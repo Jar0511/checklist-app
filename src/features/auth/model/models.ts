@@ -4,5 +4,5 @@ export type LoginType = {
 }
 
 export type RegisterType = LoginType & {
-  name: string;
+  display_name: string;
 }

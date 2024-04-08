@@ -11,7 +11,7 @@ export async function signUpWithEmail(params: RegisterType) {
     password: params.password,
     options: {
       data: {
-        name: params.name
+        display_name: params.display_name
       }
     }
   })
