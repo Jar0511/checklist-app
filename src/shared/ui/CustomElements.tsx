@@ -1,8 +1,9 @@
-import { ButtonHTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
+import { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
 import { Callout } from ".";
-import { CustomButtonType } from "../model";
+import { CustomButtonType, CustomLabelType } from "../model";
 import { Link, LinkProps } from "react-router-dom";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 // 컴포넌트화한 HTML 요소
 
@@ -37,7 +38,7 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
         } ${
           type == "number" ? "number-appearance-none" : ""
         } ${
-          type == "color" ? "color-appearance-none w-10 h-10" : `disabled:opacity-35 rounded py-[0.25em] px-[0.2em] border ${
+          type == "color" ? "color-appearance-none w-10 h-10" : `disabled:opacity-35 rounded py-[0.25em] px-[0.5em] border ${
             className?.includes("border-") ? '' : 'border-neutral-500 dark:border-neutral-300'
           }`
         } focus:outline-none focus:border-grapefruit-400 focus:border-2 disabled:cursor-not-allowed bg-[inherit]`}
@@ -64,9 +65,9 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<H
       type={type ?? "button"}
       ref={ref}
       title={title ?? (typeof children == "string" ? children : rest["aria-label"] ?? 'click')}
-      className={`${
+      className={`font-bold ${
         btnstyle == "fab" ?
-        `rounded-lg z-[9] absolute ${
+        `rounded-lg z-[9] absolute${
           // FAB position
           position?.includes("t") ? "top-5" : ""
         } ${
@@ -144,10 +145,16 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<H
   )
 })
 
-export const CustomLink = forwardRef<HTMLAnchorElement, LinkProps & {external?: boolean}>(({
+export const CustomLink = forwardRef<HTMLAnchorElement, LinkProps & {
+  /** 외부 링크 */
+  external?: boolean;
+  /** 화살표 표시할 경우 방향 */
+  arrow?: "left" | "right";
+}>(({
   children,
   className,
   external,
+  arrow,
   ...rest
 }, ref) => {
   return (
@@ -157,8 +164,53 @@ export const CustomLink = forwardRef<HTMLAnchorElement, LinkProps & {external?: 
       className={`${className ?? ''} underline inline-flex items-center gap-x-[0.25em]`}
       target={external ? "_blank" : undefined}
     >
+      {arrow == "left" && <MdChevronLeft />}
       {external && <HiOutlineExternalLink />}
       {children}
+      {arrow == "right" && <MdChevronRight />}
     </Link>
+  )
+})
+
+export const CustomLabel = forwardRef<HTMLLabelElement, HTMLAttributes<HTMLLabelElement> & CustomLabelType>(({
+  children,
+  direction,
+  align,
+  className,
+  ...rest
+}, ref) => {
+  console.log(children)
+  return (
+    <div className="inline-flex flex-col gap-y-1">
+      {
+        import.meta.env.MODE === "development" &&
+        !(Array.isArray(children) && children.some((child) => child.type === "span")) ?
+        <Callout className="bg-amber-100">
+          라벨 텍스트에 대한 스타일링은 <code>span</code>태그로 감싸야 적용됩니다(이 경고는 개발 모드에서만 표시됩니다).
+        </Callout>
+        :
+        <></>
+      }
+      <label
+        {...rest}
+        ref={ref}
+        className={`inline-flex ${
+          (!direction || direction == "horizontal") ?
+          `flex-row gap-x-[0.25em]`
+          :
+          `flex-col gap-y-[0.25em]`
+        } ${
+          (((!direction || direction == "horizontal") && !align) || align == "middle") ? "items-center" : ""
+        } ${
+          ((direction == "portrait" && !align) || align == "start") ? "items-start" : ""
+        } ${
+          align == "end" ? "items-end" : ""
+        } ${
+          className ?? ''
+        } [&_span]:text-[0.875em] [&_span]:font-medium`}
+      >
+        {children}
+      </label>
+    </div>
   )
 })

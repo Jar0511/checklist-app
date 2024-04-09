@@ -10,3 +10,10 @@ export type CustomButtonType = {
   /** 버튼 색상 채도 */
   dim?: boolean;
 }
+
+export type CustomLabelType = {
+  /** 정렬 방향 */
+  direction?: "horizontal" | "portrait";
+  /** 교차 축 정렬 기준 */
+  align?: "start" | "middle" | "end";
+}

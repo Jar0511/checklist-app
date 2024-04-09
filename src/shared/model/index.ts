@@ -1,1 +1,1 @@
-export { type CustomButtonType } from "./customElementType";
+export { type CustomButtonType, type CustomLabelType } from "./customElementType";
