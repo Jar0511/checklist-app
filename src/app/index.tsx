@@ -3,8 +3,9 @@
 import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from '@/pages/root'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
+import { RouteErrorFallBack } from '@/shared/ui'
 
 const LoginPage = lazy(() => import('@/pages/login').then(({ LoginPage }) => ({ default: LoginPage})))
 
@@ -12,11 +13,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <RouteErrorFallBack root />,
     children: [
       {
-        path: "login",
-        element: <Suspense><LoginPage /></Suspense>
-      }
+        path: "auth",
+        element: <Outlet />,
+        children: [
+          {
+            path: "login",
+            element: <Suspense><LoginPage /></Suspense>
+          }
+        ]
+      },
     ]
   }
 ]);
