@@ -74,4 +74,8 @@
     font-display: swap;
     src: local('Pretendard Thin'), url("/fonts/pretendard/woff2-subset/Pretendard-Thin.subset.woff2") format('woff2'), url("/fonts/pretendard/woff-subset/Pretendard-Thin.subset.woff") format('woff');
   }
+
+  code {
+    @apply bg-slate-50 p-[0.25em] rounded-md text-blue-600 dark:bg-slate-800 dark:text-blue-50
+  }
 }
