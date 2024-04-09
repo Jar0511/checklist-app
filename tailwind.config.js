@@ -21,6 +21,14 @@ export default {
           "900": 'rgb(143 47 40 / <alpha-value>)',
           "950": 'rgb(72 24 20 / <alpha-value>)',
         }
+      },
+      animation: {
+        'spinner': 'spinning 1s infinite'
+      },
+      keyframes: {
+        'spinning': {
+          '100%': { transform: 'rotate(.5turn)' }
+        }
       }
     },
     fontFamily: {
