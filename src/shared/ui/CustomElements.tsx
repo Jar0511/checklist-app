@@ -14,7 +14,7 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
   ...rest
 }, ref) => {
   return (
-    <div className="inline-flex flex-col gap-y-1">
+    <div className="flex flex-col w-full gap-y-1">
       {
         import.meta.env.MODE === "development" &&
         (type == "week" || type == "month") ?
@@ -38,10 +38,10 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
         } ${
           type == "number" ? "number-appearance-none" : ""
         } ${
-          type == "color" ? "color-appearance-none w-10 h-10" : `disabled:opacity-35 rounded py-[0.25em] px-[0.5em] border ${
+          type == "color" ? "color-appearance-none w-10 h-10" : `w-full disabled:opacity-35 rounded m-[auto_0] h-[2.125em] px-[0.5em] border ${
             className?.includes("border-") ? '' : 'border-neutral-500 dark:border-neutral-300'
           }`
-        } focus:outline-none focus:border-grapefruit-400 focus:border-2 disabled:cursor-not-allowed bg-[inherit]`}
+        } focus:outline-none focus:border-grapefruit-400 focus:border-2 box-border disabled:cursor-not-allowed bg-[inherit]`}
       />
     </div>
   )
@@ -179,7 +179,6 @@ export const CustomLabel = forwardRef<HTMLLabelElement, HTMLAttributes<HTMLLabel
   className,
   ...rest
 }, ref) => {
-  console.log(children)
   return (
     <div className="inline-flex flex-col gap-y-1">
       {

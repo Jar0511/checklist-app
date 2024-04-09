@@ -5,9 +5,10 @@ import ReactDOM from 'react-dom/client'
 import { App } from '@/pages/root'
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
-import { RouteErrorFallBack } from '@/shared/ui'
+import { LoadingPageFallback, RouteErrorFallBack } from '@/shared/ui'
 
-const LoginPage = lazy(() => import('@/pages/login').then(({ LoginPage }) => ({ default: LoginPage})))
+const LoginPage = lazy(() => import('@/pages/login').then(({ LoginPage }) => ({ default: LoginPage })));
+const RegisterPage = lazy(() => import('@/pages/register').then(({ RegisterPage }) => ({ default: RegisterPage })));
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,17 @@ const router = createBrowserRouter([
         children: [
           {
             path: "login",
-            element: <Suspense><LoginPage /></Suspense>
+            element:
+              <Suspense fallback={<LoadingPageFallback />}>
+                <LoginPage />
+              </Suspense>
+          },
+          {
+            path: "register",
+            element:
+              <Suspense fallback={<LoadingPageFallback />}>
+                <RegisterPage />
+              </Suspense>
           }
         ]
       },

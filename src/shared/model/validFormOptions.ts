@@ -1,0 +1,1 @@
+export const required = { value: true, message: "값을 입력해 주세요"}
