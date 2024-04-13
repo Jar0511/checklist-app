@@ -7,10 +7,14 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 // 컴포넌트화한 HTML 요소
 
-export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement> & {label?: string}>(({
-  type,
+export const CustomInput = forwardRef<
+HTMLInputElement,
+InputHTMLAttributes<HTMLInputElement> & {label?: string, err?: string, showErr?: boolean}>(({
+  type = "text",
   placeholder,
   className,
+  err,
+  showErr,
   ...rest
 }, ref) => {
   return (
@@ -27,11 +31,11 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
       <input
         {...rest}
         ref={ref}
-        type={type ?? "text"}
+        type={type}
         placeholder={
           placeholder ??
-          type == "email" ? "이메일을 입력하세요" :
-          type == "password" ? "비밀번호를 입력하세요" : ""
+          (type === "email" ? "이메일을 입력하세요" :
+          (type === "password" ? "비밀번호를 입력하세요" : ""))
         }
         className={`${
           className ?? ''
@@ -40,9 +44,10 @@ export const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTML
         } ${
           type == "color" ? "color-appearance-none w-10 h-10" : `w-full disabled:opacity-35 rounded m-[auto_0] h-[2.125em] px-[0.5em] border ${
             className?.includes("border-") ? '' : 'border-neutral-500 dark:border-neutral-300'
-          }`
+          } ${err ? 'bg-red-500/25': ''}`
         } focus:outline-none focus:border-grapefruit-400 focus:border-2 box-border disabled:cursor-not-allowed bg-[inherit]`}
       />
+      {(!!err && showErr) && <p className="err-msg">{err}</p>}
     </div>
   )
 });
@@ -161,7 +166,7 @@ export const CustomLink = forwardRef<HTMLAnchorElement, LinkProps & {
     <Link
       {...rest}
       ref={ref}
-      className={`${className ?? ''} underline inline-flex items-center gap-x-[0.25em]`}
+      className={`${className ?? ''} underline inline-flex items-center gap-x-[0.25em] text-stone-600 dark:text-stone-400`}
       target={external ? "_blank" : undefined}
     >
       {arrow == "left" && <MdChevronLeft />}

@@ -16,10 +16,18 @@ const Spinner = ({
   )
 }
 
-export const LoadingPageFallback = () => {
+export const LoadingFallback = ({
+  screen,
+  size
+}:{
+  /** 페이지 로딩 폴백 여부 */
+  screen?: boolean;
+  /** spinner size(pixel) */
+  size?: number
+}) => {
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
-      <Spinner size={72} />
+    <div className={`flex items-center justify-center ${screen ? 'w-screen h-screen' : 'w-full h-full'}`}>
+      <Spinner size={size ? size : (screen ? 72 : 50)} />
     </div>
   )
 }

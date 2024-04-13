@@ -1,8 +1,23 @@
-import { LoginForm } from "@/features/auth"
 import { ThemeToggleButton } from "@/features/setting"
+import { LoadingFallback } from "@/shared/ui";
 import { CustomLink } from "@/shared/ui/CustomElements"
+import { Suspense, lazy, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom"
+const LoginForm = lazy(() => import("@/features/auth").then(({ LoginForm }) => ({default: LoginForm})));
+const RegisterForm = lazy(() => import("@/features/auth").then(({ RegisterForm }) => ({ default: RegisterForm})));
 
-export const LoginPage = () => {
+export const AuthPage = () => {
+  const constantAction = ["login", "register"];
+  const { action } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!action || !constantAction.includes(action)) {
+      navigate("/auth/login", {replace: true});
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [action, constantAction]);
+
   return (
     <div className="flex w-screen h-screen">
       <section className="relative flex flex-1 text-sm dark:text-stone-50 text-stone-900 bg-grapefruit-300 dark:bg-grapefruit-500/25">
@@ -26,7 +41,16 @@ export const LoginPage = () => {
         </CustomLink>
       </section>
       <div className="flex items-center justify-center flex-1">
-        <LoginForm />
+        {action === "login" &&
+          <Suspense fallback={<LoadingFallback />}>
+            <LoginForm />
+          </Suspense>
+        }
+        {action === "register" &&
+          <Suspense fallback={<LoadingFallback />}>
+            <RegisterForm />
+          </Suspense>
+        }
         <ThemeToggleButton />
       </div>
     </div>
