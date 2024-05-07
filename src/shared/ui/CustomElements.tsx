@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
-import { Callout } from ".";
+import { Callout, ErrorMsg } from ".";
 import { CustomButtonType, CustomLabelType } from "../model";
 import { Link, LinkProps } from "react-router-dom";
 import { HiOutlineExternalLink } from "react-icons/hi";
@@ -47,7 +47,7 @@ InputHTMLAttributes<HTMLInputElement> & {label?: string, err?: string, showErr?:
           } ${err ? 'bg-red-500/25': ''}`
         } focus:outline-none focus:border-grapefruit-400 focus:border-2 box-border disabled:cursor-not-allowed bg-[inherit]`}
       />
-      {(!!err && showErr) && <p className="err-msg">{err}</p>}
+      {(!!err && showErr) && <ErrorMsg>{err}</ErrorMsg>}
     </div>
   )
 });

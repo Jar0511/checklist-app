@@ -1,6 +1,5 @@
 import { ThemeToggleButton } from "@/features/setting"
-import { LoadingFallback } from "@/shared/ui";
-import { CustomLink } from "@/shared/ui/CustomElements"
+import { LoadingFallback, CustomLink } from "@/shared/ui";
 import { Suspense, lazy, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 const LoginForm = lazy(() => import("@/features/auth").then(({ LoginForm }) => ({default: LoginForm})));

@@ -90,8 +90,4 @@
       var(--_c) right,
       var(--_c) bottom;
   }
-
-  .err-msg {
-    @apply text-[0.875em] font-normal text-red-500
-  }
 }

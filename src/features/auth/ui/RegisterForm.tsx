@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form"
 import { RegisterType } from "../model/models"
-import { CustomButton, CustomInput, CustomLabel } from "@/shared/ui";
+import { CustomButton, CustomInput, CustomLabel, ErrorMsg, CustomLink } from "@/shared/ui";
 import { signUpWithEmail } from "../api";
 import { useState } from "react";
 import { FormColWrapper, FormContainer } from "./layout";
 import { required } from "@/shared/model";
-import { CustomLink } from "@/shared/ui/CustomElements";
 
 export const RegisterForm = () => {
   const [serverErr, setServerErr] = useState("");
@@ -50,7 +49,7 @@ export const RegisterForm = () => {
         <CustomLink to="/auth/login" replace className="text-sm" arrow="left">로그인 화면으로 돌아가기</CustomLink>
       </FormColWrapper>
       <CustomButton type="submit">제출</CustomButton>
-      {!!serverErr && <p className="text-center err-msg">🚨 {serverErr}</p>}
+      {!!serverErr && <ErrorMsg className="text-center">🚨 {serverErr}</ErrorMsg>}
     </FormContainer>
   )
 }
