@@ -7,10 +7,9 @@ export const fetchFolder = atom(null, async (get, set) => {
   if(!more) return;
 
   const list = await getFolderList(page + 1, 50);
-  console.log(list);
 
   set(FolderAtom, {
-    folder: [...folder, ...list.map(() => "4")],
+    folder: [...folder, ...list.map((folder) => folder.name)],
     page: page + 1,
     more: list.length >= 50
   });
