@@ -1,4 +1,4 @@
-import { ThemeToggleButton } from "@/features/setting"
+import { ThemeToggleButton } from "@/features/setting/theme"
 import { LoadingFallback } from "@/shared/ui";
 import { CustomLink } from "@/shared/ui/CustomElements"
 import { Suspense, lazy, useEffect } from "react";
