@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import { RouteErrorFallBack } from '@/shared/ui'
 import { AuthPage } from '@/pages/auth'
+import { TempPage } from '@/pages/temp'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
         path: "auth/:action",
         element: <AuthPage />,
       },
+      {
+        path: "temp",
+        element: <TempPage />
+      }
     ]
   }
 ]);
