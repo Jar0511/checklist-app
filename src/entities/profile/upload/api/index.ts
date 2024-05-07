@@ -1,7 +1,10 @@
 import { supabase } from "@/shared/api"
 
+/** 폴더 목록 조회 */
 export const getFolderList = async (
+  /** 현재 페이지(자연수) */
   page?: number,
+  /** 조회시 가져올 데이터 길이(기본값: 100) */
   length?: number
 ) => {
   const { data, error } = await supabase
@@ -13,10 +16,26 @@ export const getFolderList = async (
       sortBy: {column: 'name', order: 'asc'}
     })
 
-    if(error) {
-      console.error("폴더 조회 중 오류", error);
-      return [];
-    }
+  if(error) {
+    throw new Error(`폴더 조회 중 오류: ${error}`)
+  }
 
-    return data ?? [];
+  return data ?? [];
+}
+
+/** 파일 목록 조회 */
+export const getFileList = async (
+  /** 부모 폴더 이름 */
+  folder: string
+) => {
+  const { data, error } = await supabase
+    .from('profile')
+    .select()
+    .ilike('path', `${folder}/%`);
+
+  if(error) {
+    throw new Error(`파일 조회 중 오류: ${error}`)
+  }
+
+  return data
 }
