@@ -209,6 +209,7 @@ export type Database = {
           last_5_stacked: number
           picked_4: boolean
           picked_5: boolean
+          profile_bg: string | null
           user_nm: string
           user_profile: string | null
           user_role: boolean
@@ -220,6 +221,7 @@ export type Database = {
           last_5_stacked?: number
           picked_4?: boolean
           picked_5?: boolean
+          profile_bg?: string | null
           user_nm?: string
           user_profile?: string | null
           user_role?: boolean
@@ -231,6 +233,7 @@ export type Database = {
           last_5_stacked?: number
           picked_4?: boolean
           picked_5?: boolean
+          profile_bg?: string | null
           user_nm?: string
           user_profile?: string | null
           user_role?: boolean
