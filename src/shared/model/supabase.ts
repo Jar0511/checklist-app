@@ -13,25 +13,43 @@ export type Database = {
         Row: {
           _id: string
           desc: string | null
+          fool_path: string | null
+          fool_url: string | null
           img_nm: string | null
+          is_fool: boolean | null
+          is_thumb: boolean | null
           path: string | null
           rank: number
+          thumb_path: string | null
+          thumb_url: string | null
           url: string | null
         }
         Insert: {
           _id?: string
           desc?: string | null
+          fool_path?: string | null
+          fool_url?: string | null
           img_nm?: string | null
+          is_fool?: boolean | null
+          is_thumb?: boolean | null
           path?: string | null
           rank?: number
+          thumb_path?: string | null
+          thumb_url?: string | null
           url?: string | null
         }
         Update: {
           _id?: string
           desc?: string | null
+          fool_path?: string | null
+          fool_url?: string | null
           img_nm?: string | null
+          is_fool?: boolean | null
+          is_thumb?: boolean | null
           path?: string | null
           rank?: number
+          thumb_path?: string | null
+          thumb_url?: string | null
           url?: string | null
         }
         Relationships: []
@@ -186,6 +204,7 @@ export type Database = {
       user: {
         Row: {
           _id: string
+          alter_user_profile: string | null
           last_4_stacked: number
           last_5_stacked: number
           picked_4: boolean
@@ -196,6 +215,7 @@ export type Database = {
         }
         Insert: {
           _id?: string
+          alter_user_profile?: string | null
           last_4_stacked?: number
           last_5_stacked?: number
           picked_4?: boolean
@@ -206,6 +226,7 @@ export type Database = {
         }
         Update: {
           _id?: string
+          alter_user_profile?: string | null
           last_4_stacked?: number
           last_5_stacked?: number
           picked_4?: boolean
