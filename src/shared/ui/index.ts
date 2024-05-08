@@ -2,3 +2,4 @@ export { CustomInput, CustomButton, CustomLabel, CustomLink } from "./CustomElem
 export { Callout, ErrorMsg } from "./StyledBlocks";
 export { RouteErrorFallBack } from "./ErrorDisplays";
 export { LoadingFallback } from "./LoadingDisplays";
+export { ProfileIcon } from "./ProfileIcon";

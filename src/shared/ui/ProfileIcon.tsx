@@ -1,6 +1,6 @@
 import { FaUser } from "react-icons/fa6";
 
-const ProfileIcon = ({url, bg, size = "sm"}: {url?: string; size?: "lg" | "sm"; bg?: string}) => {
+export const ProfileIcon = ({url, bg, size = "sm"}: {url?: string | null; size?: "lg" | "sm"; bg?: string | null}) => {
   return (
     <div
       className={`${
@@ -17,4 +17,3 @@ const ProfileIcon = ({url, bg, size = "sm"}: {url?: string; size?: "lg" | "sm"; 
     </div>
   )
 }
-export default ProfileIcon;
