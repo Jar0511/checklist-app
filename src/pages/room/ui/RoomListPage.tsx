@@ -7,7 +7,7 @@ export const RoomListPage = () => {
         <h1>logo</h1>
       </Header>
       <main className="container mx-auto">
-        <RoomCard />
+        <RoomCard room_nm={`죽을 먹는 사람들`} room_desc={'죽 먹기를 좋아하는 모임'} current_banner_id={'q'} />
       </main>
     </div>
   )
