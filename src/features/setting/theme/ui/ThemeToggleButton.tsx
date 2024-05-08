@@ -3,8 +3,16 @@ import { currentThemeAtom } from "../model/store"
 import { useEffect } from "react";
 import { CustomButton } from "@/shared/ui";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { CustomButtonType } from "@/shared/model";
 
-export const ThemeToggleButton = () => {
+export const ThemeToggleButton = ({
+  btnstyle = "fab",
+  size = "lg"
+}: {
+  /** 기본적으로 FAB 스타일 */
+  btnstyle?: CustomButtonType["btnstyle"]
+  size?: CustomButtonType["size"]
+}) => {
   const [theme, setTheme] = useAtom(currentThemeAtom);
 
   useEffect(() => {
@@ -18,10 +26,10 @@ export const ThemeToggleButton = () => {
     <CustomButton
       onClick={() => setTheme(pre => pre == "light" ? "dark" : "light")}
       aria-label="toggle app theme"
-      size="lg"
-      btnstyle="fab"
+      size={size}
+      btnstyle={btnstyle}
     >
-      {theme == "light" ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
+      {theme == "light" ? <MdOutlineDarkMode className="pointer-events-none" /> : <MdOutlineLightMode className="pointer-events-none" />}
     </CustomButton>
   )
 }
