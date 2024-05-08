@@ -1,9 +1,8 @@
-import { CustomButton, CustomInput } from "@/shared/ui";
 import { useForm } from "react-hook-form"
 import { signInWithEmail } from "../api";
 import { LoginType } from "..";
-import { CustomLabel, CustomLink } from "@/shared/ui/CustomElements";
 import { required } from "@/shared/model";
+import { CustomButton, CustomInput, ErrorMsg, CustomLabel, CustomLink  } from "@/shared/ui";
 import { useState } from "react";
 import { FormColWrapper, FormContainer } from "./layout";
 
@@ -45,7 +44,7 @@ export const LoginForm = () => {
         </div>
       </FormColWrapper>
       <CustomButton type="submit">로그인</CustomButton>
-      {!!serverErr && <p className="text-center err-msg">🚨 {serverErr}</p>}
+      {!!serverErr && <ErrorMsg className="text-center">🚨 {serverErr}</ErrorMsg>}
     </FormContainer>
   )
 }

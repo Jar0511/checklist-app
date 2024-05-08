@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import { IconType } from "react-icons";
 
 export const Callout = ({icon: Icon, className, children}: {icon?: string | IconType ,className?: string; children?: ReactNode}) => {
@@ -7,5 +7,11 @@ export const Callout = ({icon: Icon, className, children}: {icon?: string | Icon
       <div>{Icon ? (typeof Icon == "string" ? Icon : <Icon />) : '💡'}</div>
       <div className="flex-1 break-all whitespace-pre-line">{children}</div>
     </div>
+  )
+}
+
+export const ErrorMsg = ({children, className, ...rest}: HTMLAttributes<HTMLParagraphElement>) => {
+  return (
+    <p {...rest} className={`text-[0.875em] font-normal text-red-500 ${className ?? ''}`}>{children}</p>
   )
 }
