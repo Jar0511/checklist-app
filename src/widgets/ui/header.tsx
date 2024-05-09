@@ -5,6 +5,7 @@ import { ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { ThemeToggleButton } from "@/features/setting/theme";
+import { currentThemeAtom } from "@/features/setting/theme/model/store";
 
 export const Header = ({children}: {children?: ReactNode}) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -64,6 +65,7 @@ const Item: Variants = {
 }
 
 const UserMenu = () => {
+  const darkMode = useAtomValue(currentThemeAtom);
   const userInfo = useAtomValue(userInfoAtom);
   return (
     <motion.div
@@ -78,7 +80,7 @@ const UserMenu = () => {
           <li>내 정보</li>
           <li>
             <label className="flex items-center justify-between cursor-pointer">
-              <p>다크모드</p>
+              <p>{darkMode == "light" ? "다크" : "라이트"}모드</p>
               <ThemeToggleButton btnstyle="inline" size="md" />
             </label>
           </li>
