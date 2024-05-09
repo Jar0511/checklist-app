@@ -29,6 +29,11 @@ export default {
         'spinning': {
           '100%': { transform: 'rotate(.5turn)' }
         }
+      },
+      container: {
+        padding: {
+          DEFAULT: '16px'
+        }
       }
     },
     fontFamily: {
