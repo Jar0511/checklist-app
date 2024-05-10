@@ -7,6 +7,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import { LoadingFallback, RouteErrorFallBack } from '@/shared/ui'
 import { AuthPage } from '@/pages/auth'
+import { loadRoomList } from '@/pages/room'
 const RoomListPage = lazy(() => import('@/pages/room').then(({RoomListPage}) => ({default: RoomListPage})))
 
 const router = createBrowserRouter([
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
             element:
               <Suspense fallback={<LoadingFallback screen />}>
                 <RoomListPage />
-              </Suspense>
+              </Suspense>,
+            loader: loadRoomList
           }
         ]
       },

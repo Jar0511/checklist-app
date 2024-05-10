@@ -1,6 +1,10 @@
 import { Header, RoomCard } from "@/widgets/ui";
+import { useLoaderData } from "react-router-dom";
+import { Room } from "../model";
 
 export const RoomListPage = () => {
+  const loadData = useLoaderData() as Room[];
+  console.log(loadData);
   return (
     <div className="relative flex flex-col w-full h-full overflow-auto">
       <Header>
