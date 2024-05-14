@@ -1,5 +1,5 @@
-export { CustomInput, CustomButton, CustomLabel, CustomLink } from "./CustomElements";
-export { Callout, ErrorMsg } from "./StyledBlocks";
-export { RouteErrorFallBack } from "./ErrorDisplays";
-export { LoadingFallback } from "./LoadingDisplays";
-export { ProfileIcon } from "./ProfileIcon";
+export { CustomButton } from "./Buttons";
+export { CustomInput, CustomLabel } from "./Inputs";
+export { CustomLink, Callout, ErrorMsg, ProfileIcon } from "./Contents";
+export { RouteErrorFallBack, LoadingFallback } from "./Fallbacks";
+export { Modal } from "./Overlays";
