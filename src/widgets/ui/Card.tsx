@@ -1,4 +1,6 @@
+import { userInfoAtom } from "@/entities/user";
 import { Tables } from "@/shared/model/supabase";
+import { useAtomValue } from "jotai";
 import { HTMLAttributes } from "react";
 import { FaHouseUser, FaUserGroup } from "react-icons/fa6";
 import { PiCalendarStarFill } from "react-icons/pi";
@@ -16,6 +18,7 @@ export const RoomCard = ({
   room_owner_id,
   current_banner_id
 }: Partial<Tables<"room">>) => {
+  const { _id: my_id } = useAtomValue(userInfoAtom);
   return (
     <div className="border border-solid rounded shadow-sm border-neutral-200 dark:border-neutral-400 px-[20px] py-[16px] leading-tight flex sm:flex-row flex-col sm:items-start gap-[16px] dark:bg-stone-800">
       <div className="flex items-start sm:gap-[16px] gap-[8px] max-w-[40%]">
