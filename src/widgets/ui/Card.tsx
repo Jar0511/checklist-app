@@ -16,8 +16,9 @@ export const RoomCard = ({
   room_nm,
   room_desc,
   room_owner_id,
-  current_banner_id
-}: Partial<Tables<"room">>) => {
+  current_banner_id,
+  room_owner_nm
+}: Partial<Tables<"room">> & {room_owner_nm?: string | null}) => {
   const session = useAtomValue(userAtom);
   return (
     <div className="border border-solid rounded shadow-sm border-neutral-200 dark:border-neutral-400 px-[20px] py-[16px] leading-tight flex sm:flex-row flex-col sm:items-start gap-[16px] dark:bg-stone-800">
@@ -31,7 +32,7 @@ export const RoomCard = ({
       <div className="flex sm:gap-[16px] gap-[10px] items-cetner">
         <AdditionalInfo title="방장">
           <FaHouseUser />
-          {session?.user.id == room_owner_id ? "나" : ""}
+          {session?.user.id == room_owner_id ? "나" : room_owner_nm ?? "(알 수 없는 사용자)"}
         </AdditionalInfo>
         <AdditionalInfo title="참여자 수">
           <FaUserGroup />

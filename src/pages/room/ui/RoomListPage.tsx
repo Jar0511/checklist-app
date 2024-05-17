@@ -13,7 +13,15 @@ export const RoomListPage = () => {
       </Header>
       <main className="container mx-auto">
         {loadData.map((room) =>
-          <RoomCard key={room._id} _id={room._id} room_nm={room.room_nm} room_owner_id={room.owner?._id} room_desc={room.room_desc} current_banner_id={room.current_banner_id} />
+          <RoomCard
+            key={room._id}
+            _id={room._id}
+            room_nm={room.room_nm}
+            room_owner_id={room.owner?._id}
+            room_desc={room.room_desc}
+            current_banner_id={room.current_banner_id}
+            room_owner_nm={room.owner?.user_nm}
+          />
         )}
 
         <CreateRoomButton />
