@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom"
 
 export const RouteErrorFallBack = ({
@@ -66,3 +67,9 @@ export const LoadingFallback = ({
     </div>
   )
 }
+
+export const SkeletonWrapper = ({children, className} : {children?: ReactNode, className?: string}) => (
+  <div className={`animate-pulse *:bg-gray-200 dark:*:bg-gray-700 ${className ?? ''}`}>
+    {children}
+  </div>
+)
