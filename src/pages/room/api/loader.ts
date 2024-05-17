@@ -17,7 +17,6 @@ export const loadRoomList = async () => {
         room_desc,
         current_banner_id,
         owner:user(
-          user_profile,
           user_nm,
           _id
         )
