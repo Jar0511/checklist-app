@@ -69,7 +69,7 @@ export const LoadingFallback = ({
 }
 
 export const SkeletonWrapper = ({children, className} : {children?: ReactNode, className?: string}) => (
-  <div className={`animate-pulse *:bg-gray-200 dark:*:bg-gray-700 ${className ?? ''}`}>
+  <div role="status" className={`animate-pulse *:bg-gray-200 dark:*:bg-gray-700 ${className ?? ''} cursor-wait`}>
     {children}
   </div>
 )
