@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 export const useDismissClick = (
 	/** 유효 영역의 selector */
-	containerClass: string,
+	containerClass: string | string[],
 	/** 닫는 상태로 변경하는 콜백 */
 	close: () => void
 ) => {
@@ -15,7 +15,11 @@ export const useDismissClick = (
 	useEffect(() => {
 		const checkTarget = (e: MouseEvent) => {
 			if(e.target instanceof Element) {
-				if(e.target.closest(containerClass) == null) {
+				if(Array.isArray(containerClass)) {
+					if(containerClass.every((nm) => !(e.target as Element).closest(nm))) {
+						savedCallback.current();
+					}
+				} else if(e.target.closest(containerClass) == null) {
 					savedCallback.current();
 				}
 			}

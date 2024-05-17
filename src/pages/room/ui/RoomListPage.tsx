@@ -2,16 +2,12 @@ import { Header, RoomCard } from "@/widgets/ui";
 import { useLoaderData } from "react-router-dom";
 import { Room } from "../model";
 import { CreateRoomButton } from "@/features/room/create";
-import { Modal } from "@/shared/ui";
 
 export const RoomListPage = () => {
   const loadData = useLoaderData() as Room[];
   console.log(loadData);
   return (
     <div className="relative flex flex-col w-full h-full overflow-auto">
-
-      <Modal />
-
       <Header>
         <h1>logo</h1>
       </Header>

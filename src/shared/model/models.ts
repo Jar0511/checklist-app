@@ -9,6 +9,8 @@ export type CustomButtonType = {
   btncolor?: "primary" | "secondary" | "tertiary" | "danger";
   /** 버튼 색상 채도 */
   dim?: boolean;
+  /** 모달을 여는 버튼인지 여부 */
+  modal?: boolean;
 }
 
 export type CustomLabelType = {
@@ -16,4 +18,11 @@ export type CustomLabelType = {
   direction?: "horizontal" | "portrait";
   /** 교차 축 정렬 기준 */
   align?: "start" | "middle" | "end";
+}
+
+export type ModalType = {
+  /** 배경 클릭으로 모달을 닫을 수 있는지 여부 */
+  outsideClose?: boolean;
+  /** 상단 닫기 버튼 제거 여부: 이 값이 활성화되면 outsideClose는 무시됩니다 */
+  noDismiss?: boolean;
 }

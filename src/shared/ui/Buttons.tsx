@@ -11,6 +11,7 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<H
   className,
   dim,
   btncolor,
+  modal,
   ...rest
 }, ref) => {
   return (
@@ -92,7 +93,7 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<H
           :
           ''
         }`
-      } transition-all disabled:opacity-30 disabled:cursor-not-allowed tracking-wide`}
+      } ${modal ? 'modal-btn' : ""} transition-all disabled:opacity-30 disabled:cursor-not-allowed tracking-wide`}
     >
       {children}
     </button>
