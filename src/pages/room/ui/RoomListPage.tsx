@@ -12,7 +12,10 @@ export const RoomListPage = () => {
         <h1>logo</h1>
       </Header>
       <main className="container mx-auto">
-        <RoomCard room_nm={`죽을 먹는 사람들`} room_desc={'죽 먹기를 좋아하는 모임'} current_banner_id={'q'} />
+        {loadData.map((room) =>
+          <RoomCard key={room._id} _id={room._id} room_nm={room.room_nm} room_owner_id={room.owner?._id} room_desc={room.room_desc} current_banner_id={room.current_banner_id} />
+        )}
+
         <CreateRoomButton />
       </main>
     </div>

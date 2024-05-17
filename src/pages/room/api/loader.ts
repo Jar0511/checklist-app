@@ -12,6 +12,7 @@ export const loadRoomList = async () => {
     .from('room_user')
     .select(`
       room(
+        _id,
         room_nm,
         room_desc,
         current_banner_id,
