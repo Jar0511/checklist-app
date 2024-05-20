@@ -4,8 +4,7 @@ import { ProfileIcon } from "@/shared/ui";
 import { ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { AnimatePresence, Variants, motion } from "framer-motion";
-import { ThemeToggleButton } from "@/features/setting/theme";
-import { currentThemeAtom } from "@/features/setting/theme/model/store";
+import { ThemeToggleButton, currentThemeAtom } from "@/features/setting/theme";
 
 export const Header = ({children}: {children?: ReactNode}) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -69,7 +68,7 @@ const UserMenu = () => {
   const userInfo = useAtomValue(userInfoAtom);
   return (
     <motion.div
-      className="absolute shadow-md mt-[2px] border border-solid border-neutral-200 dark:border-neutral-500 bg-white dark:bg-stone-700 rounded-md py-[12px] w-[200px] right-0 z-[9]"
+      className="absolute shadow-md mt-[2px] border border-solid border-neutral-200 dark:border-neutral-500 bg-white dark:bg-stone-700 rounded-md py-[12px] w-[200px] right-0 z-[99]"
       variants={Container}
       initial="hidden"
       animate="visible"
