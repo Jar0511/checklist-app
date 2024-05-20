@@ -1,7 +1,9 @@
 import { userAtom } from "@/entities/auth";
+import { getRoomMembers } from "@/features/room/setting";
 import { Tables } from "@/shared/model/supabase";
+import { SkeletonWrapper } from "@/shared/ui";
 import { useAtomValue } from "jotai";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, Suspense, useEffect, useState } from "react";
 import { FaHouseUser, FaUserGroup } from "react-icons/fa6";
 import { PiCalendarStarFill } from "react-icons/pi";
 
@@ -20,8 +22,18 @@ export const RoomCard = ({
   room_owner_nm
 }: Partial<Tables<"room">> & {room_owner_nm?: string | null}) => {
   const session = useAtomValue(userAtom);
+  const [members, setMembers] = useState<null | number>(null);
+
+  useEffect(() => {
+    if(_id != undefined) {
+      (async () => {
+        const { members } = await getRoomMembers(_id)
+        setMembers(members.length);
+      })()
+    }
+  }, [_id]);
   return (
-    <div className="border border-solid rounded shadow-sm border-neutral-200 dark:border-neutral-400 px-[20px] py-[16px] leading-tight flex sm:flex-row flex-col sm:items-start gap-[16px] dark:bg-stone-800">
+    <div className="border border-solid rounded shadow-sm border-neutral-200 dark:border-neutral-400 px-[20px] py-[16px] leading-tight flex sm:flex-row flex-col sm:items-start gap-[16px] dark:bg-stone-800 cursor-pointer">
       <div className="flex items-start sm:gap-[16px] gap-[8px] max-w-[40%]">
         <span title={current_banner_id ? "프로필 뽑기 진행 중" : ""} className="w-[1.25rem] h-[1.25rem] inline-flex items-center justify-center">
           {!!current_banner_id && <PiCalendarStarFill className="size-[1.25rem] fill-grapefruit-500 dark:fill-grapefruit-700" />}
@@ -34,10 +46,18 @@ export const RoomCard = ({
           <FaHouseUser />
           {session?.user.id == room_owner_id ? "나" : room_owner_nm ?? "(알 수 없는 사용자)"}
         </AdditionalInfo>
-        <AdditionalInfo title="참여자 수">
-          <FaUserGroup />
-          12
-        </AdditionalInfo>
+        <Suspense
+          fallback={
+            <SkeletonWrapper>
+              <div className="w-8 h-4" />
+            </SkeletonWrapper>
+          }
+        >
+          <AdditionalInfo title="참여자 수">
+            <FaUserGroup />
+            {members}
+          </AdditionalInfo>
+        </Suspense>
       </div>
     </div>
   )

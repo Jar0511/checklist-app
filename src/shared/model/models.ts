@@ -35,6 +35,8 @@ type CommonModal = {
   actionButtons?: ReactNode;
   /** 하단 버튼 정렬 방향 */
   btnDirection?: "x" | "y";
+  /** 로딩 상태 */
+  loading?: boolean;
 }
 
 type BasicModal = {

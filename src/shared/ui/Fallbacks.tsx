@@ -54,22 +54,28 @@ const Spinner = ({
 
 export const LoadingFallback = ({
   screen,
-  size
+  size,
+  blur,
+  className
 }:{
   /** 페이지 로딩 폴백 여부 */
   screen?: boolean;
   /** spinner size(pixel) */
-  size?: number
+  size?: number;
+  /** 백드롭 블러효과 여부 */
+  blur?: boolean;
+  className?: string;
 }) => {
   return (
-    <div className={`flex items-center justify-center ${screen ? 'w-screen h-screen' : 'w-full h-full'}`}>
+    <div className={`flex items-center justify-center ${screen ? 'w-screen h-screen' : 'w-full h-full'} rounded-[inherit] cursor-wait ${blur ? "backdrop-blur-lg" : " "} ${className ?? ''}`}>
       <Spinner size={size ? size : (screen ? 72 : 50)} />
     </div>
   )
 }
 
 export const SkeletonWrapper = ({children, className} : {children?: ReactNode, className?: string}) => (
-  <div role="status" className={`animate-pulse *:bg-gray-200 dark:*:bg-gray-700 ${className ?? ''} cursor-wait`}>
+  // TODO: 겹치는 요소 위로 노출되는 현상 있는데 아직 원인 모름(나중에 검토)
+  <div role="status" className={`animate-pulse ${className ?? ''} *:bg-neutral-200 dark:*:bg-neutral-700 *:rounded-sm cursor-wait`}>
     {children}
   </div>
 )

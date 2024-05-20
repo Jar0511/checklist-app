@@ -5,6 +5,7 @@ import { useDismissClick } from "../lib";
 import { CustomButton } from "./Buttons";
 import { MdClose } from "react-icons/md";
 import { Callout } from "./Contents";
+import { LoadingFallback } from "./Fallbacks";
 
 const ModalContainer = ({
   outsideClose,
@@ -14,13 +15,15 @@ const ModalContainer = ({
   children,
   bottomContent,
   btnDirection,
-  actionButtons
+  actionButtons,
+  loading
 }: ModalType) => {
   const setShow = useSetAtom(modalShowAtom);
-  useDismissClick(["#modal-container", ".modal-btn"], () => (outsideClose && !noDismiss) ? setShow(false) : null);
+  useDismissClick(["#modal-container", ".modal-btn"], () => (outsideClose && !noDismiss && !loading) ? setShow(false) : null);
   return (
     <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-black/50 backdrop-blur-sm">
       <div id="modal-container" className="absolute -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2 font-Pretendard text-neutral-900 dark:bg-neutral-200 w-[288px] sm:w-[300px] md:w-[420px] rounded-xl h-auto max-h-[80vh] flex flex-col gap-8 items-center">
+        {loading && <LoadingFallback className="absolute" blur />}
         <div className={`flex flex-col ${bgColor ?? ''} w-full`}>
           {!noDismiss &&
             <div className="flex flex-row-reverse px-2 pt-2">
