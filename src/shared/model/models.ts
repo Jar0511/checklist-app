@@ -39,6 +39,8 @@ type CommonModal = {
   btnDirection?: "x" | "y";
   /** 로딩 상태 */
   loading?: boolean;
+  /** 내용물 정렬 방향 */
+  align?: "left" | "center" | "right";
 }
 
 type BasicModal = {

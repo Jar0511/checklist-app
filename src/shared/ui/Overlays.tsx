@@ -16,7 +16,8 @@ const ModalContainer = ({
   bottomContent,
   btnDirection,
   actionButtons,
-  loading
+  loading,
+  align
 }: ModalType) => {
   const setShow = useSetAtom(modalShowAtom);
   useDismissClick(["#modal-container", ".modal-btn"], () => (outsideClose && !noDismiss && !loading) ? setShow(false) : null);
@@ -37,7 +38,11 @@ const ModalContainer = ({
             </div>
           }
           <div
-            className={`px-10 ${type == "promotion" ? "h-[500px]" : "max-h-[500px]"} overflow-auto flex flex-col items-center gap-2 ${
+            className={`px-10 ${type == "promotion" ? "h-[500px]" : "max-h-[500px]"} overflow-auto flex flex-col ${
+              !align || align == "center" ? "items-center" :
+              align == "left" ? "items-start" :
+              "items-end"
+            } gap-2 ${
               // 이미지 스타일링
               '[&_img]:order-[0]'
             } ${
@@ -49,8 +54,8 @@ const ModalContainer = ({
             } *:order-last text-[0.9375rem]`}
           >
             {
-              (import.meta.env.MODE === "development" && false) &&
-              <Callout className="bg-amber-100">
+              (import.meta.env.MODE === "development") &&
+              <Callout className="w-full bg-amber-100">
                 스타일링 적용을 위해 아래의 규칙을 지켜주세요<br />(이 경고는 개발 모드에서만 표시됩니다)
                 <ol className="list-decimal list-inside">
                   <li>타이틀은 <code>h3</code> 태그로 감싸주세요</li>
