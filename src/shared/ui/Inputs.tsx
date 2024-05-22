@@ -52,6 +52,7 @@ export const CustomLabel = forwardRef<HTMLLabelElement, HTMLAttributes<HTMLLabel
   direction,
   align,
   className,
+  required,
   ...rest
 }, ref) => {
   return (
@@ -81,7 +82,9 @@ export const CustomLabel = forwardRef<HTMLLabelElement, HTMLAttributes<HTMLLabel
           align == "end" ? "items-end" : ""
         } ${
           className ?? ''
-        } [&_span]:text-[0.875em] [&_span]:font-medium`}
+        } [&_span]:text-[0.875em] [&_span]:font-medium ${
+          required ? "[&_span]:relative [&_span:after]:content-['*'] [&_span:after]:text-red-500 [&_span:after]:absolute [&_span:after]:-top-[2px] [&_span:after]:font-medium" : ""
+        }`}
       >
         {children}
       </label>

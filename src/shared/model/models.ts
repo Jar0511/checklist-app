@@ -20,6 +20,8 @@ export type CustomLabelType = {
   direction?: "horizontal" | "portrait";
   /** 교차 축 정렬 기준 */
   align?: "start" | "middle" | "end";
+  /** 필수값 여부 */
+  required?: boolean;
 }
 
 type CommonModal = {
