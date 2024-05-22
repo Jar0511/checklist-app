@@ -1,11 +1,11 @@
 import { useAtomValue } from "jotai";
 import { userInfoAtom } from "@/entities/user";
 import { DropDownWrapper, ProfileIcon } from "@/shared/ui";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { ThemeToggleButton, currentThemeAtom } from "@/features/setting/theme";
 
-export const Header = ({children}: {children?: ReactNode}) => {
+export const Header = ({logo}: {logo?: boolean}) => {
   const [openMenu, setOpenMenu] = useState(false);
   const userInfo = useAtomValue(userInfoAtom);
 
@@ -27,7 +27,7 @@ export const Header = ({children}: {children?: ReactNode}) => {
           </button>
           {openMenu && <UserMenu />}
         </div>
-        {children}
+        {logo && <h1>logo</h1>}
       </div>
     </header>
   )

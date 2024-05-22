@@ -1,17 +1,17 @@
 import { Header, RoomCard } from "@/widgets/ui";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Room } from "../model";
 import { CreateRoomButton } from "@/features/room/create";
 
 export const RoomListPage = () => {
+  const navigate = useNavigate();
   const loadData = useLoaderData() as Room[];
   console.log(loadData);
   return (
     <div className="relative flex flex-col w-full h-full overflow-auto">
-      <Header>
-        <h1>logo</h1>
-      </Header>
+      <Header logo />
       <main className="container flex flex-col flex-1 gap-4 mx-auto overflow-auto">
+        <p onClick={() => navigate("/banner")}>임시 버튼</p>
         <CreateRoomButton />
         <ul className="flex flex-col flex-1 gap-2 overflow-auto">
           {loadData.map((room) =>
