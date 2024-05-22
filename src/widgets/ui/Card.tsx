@@ -1,5 +1,5 @@
 import { userAtom } from "@/entities/auth";
-import { getRoomMembers } from "@/features/room/setting";
+import { getRoomMembers } from "@/features/room/info";
 import { useDismissClick } from "@/shared/lib";
 import { Tables } from "@/shared/model/supabase";
 import { CustomButton, DropDownWrapper, SkeletonWrapper } from "@/shared/ui";
