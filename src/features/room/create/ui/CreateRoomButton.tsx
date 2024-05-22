@@ -48,9 +48,9 @@ export const CreateRoomButton = () => {
                 room_nm,
                 room_owner_id: user.user.id
               })
-              setShow(false);
-              revalidator.revalidate();
               setLoading(false);
+              revalidator.revalidate();
+              setShow(false);
             }
           })}
           className="flex w-full gap-2"
