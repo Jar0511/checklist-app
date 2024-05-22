@@ -93,7 +93,7 @@ export const CustomButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<H
           :
           ''
         }`
-      } ${modal ? 'modal-btn' : ""} transition-all disabled:opacity-30 disabled:cursor-not-allowed tracking-wide`}
+      } ${modal ? 'modal-btn' : ""} transition-all disabled:opacity-30 disabled:cursor-not-allowed tracking-wide [&_svg]:size-[1.2em]`}
     >
       {children}
     </button>
