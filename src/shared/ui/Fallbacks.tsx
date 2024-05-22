@@ -74,7 +74,6 @@ export const LoadingFallback = ({
 }
 
 export const SkeletonWrapper = ({children, className} : {children?: ReactNode, className?: string}) => (
-  // TODO: 겹치는 요소 위로 노출되는 현상 있는데 아직 원인 모름(나중에 검토)
   <div role="status" className={`animate-pulse ${className ?? ''} *:bg-neutral-200 dark:*:bg-neutral-700 *:rounded-sm cursor-wait`}>
     {children}
   </div>

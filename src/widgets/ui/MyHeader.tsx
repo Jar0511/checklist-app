@@ -12,7 +12,7 @@ export const Header = ({children}: {children?: ReactNode}) => {
 
   useDismissClick('#user_menu_aria', () => setOpenMenu(false));
   return (
-    <header className={`w-full sticky top-0 flex justify-center`}>
+    <header className={`w-full sticky top-0 flex justify-center z-[9]`}>
       <div className="container flex flex-row-reverse justify-between items-center py-[12px]">
         <div id="user_menu_aria" className="relative">
           <button
