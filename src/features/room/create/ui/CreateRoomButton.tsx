@@ -4,10 +4,10 @@ import { Tables } from "@/shared/model/supabase";
 import { CustomButton, CustomInput, CustomLabel, Modal } from "@/shared/ui";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
-import { MdGroups } from "react-icons/md";
 import { postNewRoom } from "../api";
 import { useRevalidator } from "react-router-dom";
 import { useState } from "react";
+import { PiPlusCircleBold } from "react-icons/pi";
 
 export const CreateRoomButton = () => {
   const user = useAtomValue(userAtom);
@@ -70,7 +70,7 @@ export const CreateRoomButton = () => {
         onClick={() => setShow(true)}
         title="방 생성"
       >
-        <MdGroups />
+        <PiPlusCircleBold />
         신규 방 생성
       </CustomButton>
     </>
