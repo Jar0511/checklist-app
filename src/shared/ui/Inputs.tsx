@@ -1,6 +1,9 @@
 import { HTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
 import { Callout, ErrorMsg } from ".";
-import { CustomLabelType } from "../model";
+import { CustomLabelType, required } from "../model";
+import { useSearchParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { MdOutlineSearch } from "react-icons/md";
 
 export const CustomInput = forwardRef<
 HTMLInputElement,
@@ -91,3 +94,29 @@ export const CustomLabel = forwardRef<HTMLLabelElement, HTMLAttributes<HTMLLabel
     </div>
   )
 })
+
+export const SearchInput = ({
+  queryKey,
+  className,
+  realTime
+}: {
+  queryKey: string;
+  className?: string;
+  realTime?: boolean;
+}) => {
+  const {
+    register,
+    handleSubmit
+  } = useForm<{search: string}>()
+  const [, setSearchParam] = useSearchParams();
+  const reg = register("search", {required, onChange: (e) => realTime ? console.log(e.currentTarget) : null});
+  return (
+    <form
+      className="relative group"
+      onSubmit={handleSubmit(({search}) => setSearchParam({[queryKey]: search}))}
+    >
+      <CustomInput className={`${className ?? ''} pl-[32px]`} {...reg} />
+      <MdOutlineSearch className="absolute -translate-y-1/2 left-[8px] top-1/2 group-has-[:focus]:text-grapefruit-400" />
+    </form>
+  )
+}
