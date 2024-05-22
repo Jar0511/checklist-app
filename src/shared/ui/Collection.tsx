@@ -45,7 +45,7 @@ export const DropDownWrapper = ({
 }) => (
   <AnimatePresence>
     <motion.div
-      className="absolute shadow-md mt-[2px] border border-solid border-neutral-200 dark:border-neutral-500 bg-white dark:bg-stone-700 rounded-md py-[12px] z-[99]"
+      className="absolute shadow-md mt-[2px] border border-solid border-neutral-200 dark:border-neutral-500 bg-white dark:bg-stone-700 rounded-md py-[12px]"
       variants={Container}
       initial="hidden"
       animate="visible"
