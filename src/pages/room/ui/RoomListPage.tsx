@@ -11,7 +11,7 @@ export const RoomListPage = () => {
     <div className="relative flex flex-col w-full h-full overflow-auto">
       <Header logo />
       <main className="container flex flex-col flex-1 gap-4 mx-auto overflow-auto">
-        <p onClick={() => navigate("/banner")}>임시 버튼</p>
+        <p onClick={() => navigate("/dashboard")}>임시 버튼</p>
         <CreateRoomButton />
         <ul className="flex flex-col flex-1 gap-2 overflow-auto">
           {loadData.map((room) =>

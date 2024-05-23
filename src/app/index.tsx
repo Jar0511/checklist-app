@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "banner",
+        path: "dashboard",
         element:
           <Suspense fallback={<LoadingFallback screen />}>
             <BannerDashBoardPage />
