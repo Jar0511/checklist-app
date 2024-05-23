@@ -20,8 +20,8 @@ export const BannerDashBoardPage = () => {
     <div className="relative flex flex-col w-full h-full overflow-auto">
       <Header logo />
       <section className="container flex items-stretch flex-1 mx-auto">
-        <aside className="w-full overflow-auto border border-solid border-neutral-200 dark:border-neutral-500 sm:w-[320px]">
-          <div><SearchInput queryKey={SEARCH_KEY} /></div>
+        <aside className="w-full overflow-auto border border-solid border-neutral-200 dark:border-neutral-500 sm:w-[320px] p-6 bg-neutral-50 dark:bg-neutral-700">
+          <div><SearchInput queryKey={SEARCH_KEY} realTime /></div>
           <div className="bg-blue-300">박스</div>
           <div className="bg-blue-300">박스</div>
           <div className="bg-blue-300">박스</div>

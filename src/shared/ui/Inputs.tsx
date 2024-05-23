@@ -109,7 +109,7 @@ export const SearchInput = ({
     handleSubmit
   } = useForm<{search: string}>()
   const [, setSearchParam] = useSearchParams();
-  const reg = register("search", {required, onChange: (e) => realTime ? console.log(e.currentTarget) : null});
+  const reg = register("search", {required, onChange: (e) => realTime ? setSearchParam({[queryKey]: e.currentTarget.value.trim()}) : null});
   return (
     <form
       className="relative group"
