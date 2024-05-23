@@ -108,12 +108,12 @@ export const SearchInput = ({
     register,
     handleSubmit
   } = useForm<{search: string}>()
-  const [, setSearchParam] = useSearchParams();
-  const reg = register("search", {required, onChange: (e) => realTime ? setSearchParam({[queryKey]: e.currentTarget.value.trim()}) : null});
+  const [searchParam, setSearchParam] = useSearchParams();
+  const reg = register("search", {required, onChange: (e) => realTime ? setSearchParam({...Object.fromEntries(searchParam), [queryKey]: e.currentTarget.value.trim()}) : null});
   return (
     <form
       className="relative group"
-      onSubmit={handleSubmit(({search}) => setSearchParam({[queryKey]: search}))}
+      onSubmit={handleSubmit(({search}) => setSearchParam({...Object.fromEntries(searchParam),[queryKey]: search}))}
     >
       <CustomInput className={`${className ?? ''} pl-[32px]`} {...reg} />
       <MdOutlineSearch className="absolute -translate-y-1/2 left-[8px] top-1/2 group-has-[:focus]:text-grapefruit-400" />

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const BannerDashBoardPage = () => {
-  const [search] = useSearchParams();
+  const [search, setSearch] = useSearchParams();
   const SEARCH_KEY = "name";
   const {folder, more} = useAtomValue(FolderAtom);
   const fetcher = useSetAtom(fetchFolder);
@@ -37,7 +37,7 @@ export const BannerDashBoardPage = () => {
             folder.filter((title) =>
               !search.get(SEARCH_KEY) || title.includes(search.get(SEARCH_KEY) as string)
             ).map((title) =>
-              <p key={title}>{title}</p>
+              <p key={title} onClick={() => setSearch({...Object.fromEntries(search), target: title})}>{title}</p>
             )
           }
           <button type="button" onClick={fetcher} disabled={!more}>
