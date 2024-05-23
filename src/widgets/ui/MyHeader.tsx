@@ -1,17 +1,17 @@
 import { useAtomValue } from "jotai";
 import { userInfoAtom } from "@/entities/user";
 import { DropDownWrapper, ProfileIcon } from "@/shared/ui";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { ThemeToggleButton, currentThemeAtom } from "@/features/setting/theme";
 
-export const Header = ({logo}: {logo?: boolean}) => {
+export const Header = ({logo, className, children}: {logo?: boolean; className?: string; children?: ReactNode;}) => {
   const [openMenu, setOpenMenu] = useState(false);
   const userInfo = useAtomValue(userInfoAtom);
 
   useDismissClick('#user_menu_aria', () => setOpenMenu(false));
   return (
-    <header className={`w-full sticky top-0 flex justify-center z-[9]`}>
+    <header className={`${className ?? ''} w-full sticky top-0 flex justify-center z-[9]`}>
       <div className="container flex flex-row-reverse justify-between items-center py-[12px]">
         <div id="user_menu_aria" className="relative">
           <button
@@ -27,6 +27,7 @@ export const Header = ({logo}: {logo?: boolean}) => {
           </button>
           {openMenu && <UserMenu />}
         </div>
+        {children}
         {logo && <h1>logo</h1>}
       </div>
     </header>

@@ -9,6 +9,7 @@ import { LoadingFallback, RouteErrorFallBack } from '@/shared/ui'
 import { AuthPage } from '@/pages/auth'
 import { loadRoomList } from '@/pages/room'
 const RoomListPage = lazy(() => import('@/pages/room').then(({RoomListPage}) => ({default: RoomListPage})))
+const RoomWrapper = lazy(() => import('@/pages/room').then(({RoomWrapper}) => ({default: RoomWrapper})))
 const BannerDashBoardPage = lazy(() => import('@/pages/banner').then(({ BannerDashBoardPage }) => ({default: BannerDashBoardPage})))
 
 const router = createBrowserRouter([
@@ -32,6 +33,13 @@ const router = createBrowserRouter([
                 <RoomListPage />
               </Suspense>,
             loader: loadRoomList
+          },
+          {
+            path: ":room_id",
+            element:
+              <Suspense fallback={<LoadingFallback screen />}>
+                <RoomWrapper />
+              </Suspense>
           }
         ]
       },
