@@ -13,46 +13,39 @@ export type Database = {
         Row: {
           _id: string
           desc: string | null
-          fool_path: string | null
-          fool_url: string | null
           img_nm: string | null
-          is_fool: boolean | null
-          is_thumb: boolean | null
           path: string | null
+          preview_id: string | null
           rank: number
-          thumb_path: string | null
-          thumb_url: string | null
           url: string | null
         }
         Insert: {
           _id?: string
           desc?: string | null
-          fool_path?: string | null
-          fool_url?: string | null
           img_nm?: string | null
-          is_fool?: boolean | null
-          is_thumb?: boolean | null
           path?: string | null
+          preview_id?: string | null
           rank?: number
-          thumb_path?: string | null
-          thumb_url?: string | null
           url?: string | null
         }
         Update: {
           _id?: string
           desc?: string | null
-          fool_path?: string | null
-          fool_url?: string | null
           img_nm?: string | null
-          is_fool?: boolean | null
-          is_thumb?: boolean | null
           path?: string | null
+          preview_id?: string | null
           rank?: number
-          thumb_path?: string | null
-          thumb_url?: string | null
           url?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "profile_preview_id_fkey"
+            columns: ["preview_id"]
+            isOneToOne: false
+            referencedRelation: "profile_preview"
+            referencedColumns: ["_id"]
+          },
+        ]
       }
       profile_banner: {
         Row: {
@@ -128,6 +121,48 @@ export type Database = {
             referencedColumns: ["_id"]
           },
         ]
+      }
+      profile_fool: {
+        Row: {
+          _id: string
+          img_nm: string | null
+          path: string | null
+          url: string | null
+        }
+        Insert: {
+          _id?: string
+          img_nm?: string | null
+          path?: string | null
+          url?: string | null
+        }
+        Update: {
+          _id?: string
+          img_nm?: string | null
+          path?: string | null
+          url?: string | null
+        }
+        Relationships: []
+      }
+      profile_preview: {
+        Row: {
+          _id: string
+          img_nm: string | null
+          path: string | null
+          url: string | null
+        }
+        Insert: {
+          _id?: string
+          img_nm?: string | null
+          path?: string | null
+          url?: string | null
+        }
+        Update: {
+          _id?: string
+          img_nm?: string | null
+          path?: string | null
+          url?: string | null
+        }
+        Relationships: []
       }
       room: {
         Row: {
