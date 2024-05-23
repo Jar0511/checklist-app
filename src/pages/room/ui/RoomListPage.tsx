@@ -1,7 +1,8 @@
-import { Header, RoomCard } from "@/widgets/ui";
+import { Header } from "@/widgets/ui";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Room } from "../model";
 import { CreateRoomButton } from "@/features/room/create";
+import { RoomCard } from "@/features/room/info";
 
 export const RoomListPage = () => {
   const navigate = useNavigate();
