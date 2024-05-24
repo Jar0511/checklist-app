@@ -28,7 +28,9 @@ export function useFetch<I, T>(fetch: (arg: I) => Promise<T>, arg: I){
 
   if (_status === "pending" && _promise) {
     throw _promise; // * suspense fallback *
-  }  if (_status === "error") {
+  }
+  if (_status === "error") {
     throw _error; // error
-  }  return _result; // rendering result
+  }
+  return _result; // rendering result
 }
