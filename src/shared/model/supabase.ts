@@ -9,40 +9,121 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      checklist: {
+        Row: {
+          checked: boolean
+          count: number
+          created_at: string
+          id: number
+          room_id: number | null
+          title: string | null
+        }
+        Insert: {
+          checked?: boolean
+          count?: number
+          created_at?: string
+          id?: number
+          room_id?: number | null
+          title?: string | null
+        }
+        Update: {
+          checked?: boolean
+          count?: number
+          created_at?: string
+          id?: number
+          room_id?: number | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "checklist_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "room"
+            referencedColumns: ["_id"]
+          },
+        ]
+      }
+      notice: {
+        Row: {
+          content: string | null
+          creator: string | null
+          id: number
+          room_id: number | null
+        }
+        Insert: {
+          content?: string | null
+          creator?: string | null
+          id?: number
+          room_id?: number | null
+        }
+        Update: {
+          content?: string | null
+          creator?: string | null
+          id?: number
+          room_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notice_creator_fkey"
+            columns: ["creator"]
+            isOneToOne: false
+            referencedRelation: "user"
+            referencedColumns: ["_id"]
+          },
+          {
+            foreignKeyName: "notice_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "room"
+            referencedColumns: ["_id"]
+          },
+        ]
+      }
       profile: {
         Row: {
           _id: string
           desc: string | null
+          fool_id: string | null
           img_nm: string | null
           path: string | null
-          preview_id: string | null
           rank: number
+          thumb_id: string | null
           url: string | null
         }
         Insert: {
           _id?: string
           desc?: string | null
+          fool_id?: string | null
           img_nm?: string | null
           path?: string | null
-          preview_id?: string | null
           rank?: number
+          thumb_id?: string | null
           url?: string | null
         }
         Update: {
           _id?: string
           desc?: string | null
+          fool_id?: string | null
           img_nm?: string | null
           path?: string | null
-          preview_id?: string | null
           rank?: number
+          thumb_id?: string | null
           url?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "profile_preview_id_fkey"
-            columns: ["preview_id"]
+            foreignKeyName: "profile_fool_id_fkey"
+            columns: ["fool_id"]
             isOneToOne: false
-            referencedRelation: "profile_preview"
+            referencedRelation: "profile"
+            referencedColumns: ["_id"]
+          },
+          {
+            foreignKeyName: "profile_thumb_id_fkey"
+            columns: ["thumb_id"]
+            isOneToOne: false
+            referencedRelation: "profile"
             referencedColumns: ["_id"]
           },
         ]
@@ -121,48 +202,6 @@ export type Database = {
             referencedColumns: ["_id"]
           },
         ]
-      }
-      profile_fool: {
-        Row: {
-          _id: string
-          img_nm: string | null
-          path: string | null
-          url: string | null
-        }
-        Insert: {
-          _id?: string
-          img_nm?: string | null
-          path?: string | null
-          url?: string | null
-        }
-        Update: {
-          _id?: string
-          img_nm?: string | null
-          path?: string | null
-          url?: string | null
-        }
-        Relationships: []
-      }
-      profile_preview: {
-        Row: {
-          _id: string
-          img_nm: string | null
-          path: string | null
-          url: string | null
-        }
-        Insert: {
-          _id?: string
-          img_nm?: string | null
-          path?: string | null
-          url?: string | null
-        }
-        Update: {
-          _id?: string
-          img_nm?: string | null
-          path?: string | null
-          url?: string | null
-        }
-        Relationships: []
       }
       room: {
         Row: {
