@@ -47,18 +47,21 @@ export type Database = {
       notice: {
         Row: {
           content: string | null
+          created_at: string | null
           creator: string | null
           id: number
           room_id: number | null
         }
         Insert: {
           content?: string | null
+          created_at?: string | null
           creator?: string | null
           id?: number
           room_id?: number | null
         }
         Update: {
           content?: string | null
+          created_at?: string | null
           creator?: string | null
           id?: number
           room_id?: number | null
