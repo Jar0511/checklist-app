@@ -1,8 +1,9 @@
 import { getRoomInfo, roomInfoAtom } from "@/entities/room";
+import { useDebounce } from "@/shared/lib";
 import { CustomInput } from "@/shared/ui";
 import { Header } from "@/widgets/ui"
 import { useAtom } from "jotai";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { AiFillNotification } from "react-icons/ai";
 import { Outlet, useParams } from "react-router-dom"
 
@@ -26,10 +27,11 @@ const CheckItem = () => {
 }
 
 const CheckList = () => {
+  const debounde = useDebounce((e: ChangeEvent<HTMLInputElement>) => console.log(e.target.value), 1000)
   return (
     <div className="flex flex-col gap-4 p-4 rounded bg-neutral-100">
       <div className="relative group">
-        <CustomInput placeholder="지금 우리에게 필요한 건.." />
+        <CustomInput placeholder="지금 우리에게 필요한 건.." onChange={(e) => debounde(e)} />
         <div className="absolute hidden">
           입력을 계속해서 체크리스트를 추가해보세요..
         </div>
