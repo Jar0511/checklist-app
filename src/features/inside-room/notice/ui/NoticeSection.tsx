@@ -39,26 +39,6 @@ const NoticeCardList = ({room_id}: {room_id: number}) => {
             <MdAdd />
             신규 공지 작성하기
           </CustomButton>
-          <CustomButton btnstyle="inline">
-            <MdAdd />
-            신규 공지 작성하기
-          </CustomButton>
-          <CustomButton btnstyle="inline">
-            <MdAdd />
-            신규 공지 작성하기
-          </CustomButton>
-          <CustomButton btnstyle="inline">
-            <MdAdd />
-            신규 공지 작성하기
-          </CustomButton>
-          <CustomButton btnstyle="inline">
-            <MdAdd />
-            신규 공지 작성하기
-          </CustomButton>
-          <CustomButton btnstyle="inline">
-            <MdAdd />
-            신규 공지 작성하기
-          </CustomButton>
         </div>
       }
     </section>
