@@ -81,12 +81,14 @@ const ModalContainer = ({
 export const Modal = (props: ModalType) => {
   const show = useAtomValue(modalShowAtom);
   const portal = document.getElementById("portal") as Element;
-  return (
-    <>
-      {createPortal(
-        (show && show == props.modal_id) ? <ModalContainer {...props} /> : <></>,
-        portal
-      )}
-    </>
+
+  if(show && show == props.modal_id) {
+    return (
+      <>
+        {createPortal(<ModalContainer {...props} />, portal)}
+      </>
+    )
+  } else return (
+    <></>
   )
 }
