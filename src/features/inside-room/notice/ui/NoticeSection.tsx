@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form"
 import { CustomTextarea } from "@/shared/ui/Inputs"
 import { userAtom } from "@/entities/auth"
 
-const AddNewNoticeButton = () => {
+const AddNewNoticeButton = ({onSuccess}: {onSuccess: () => void}) => {
   const {
     register,
     handleSubmit,
@@ -53,6 +53,8 @@ const AddNewNoticeButton = () => {
               room_id: roomInfo._id
             });
             setLoading(false);
+            onSuccess();
+            setShow(null);
           })}
         >
           <CustomTextarea {...contentRegister} />
@@ -88,17 +90,19 @@ const NoticeCard = ({
 }
 
 const NoticeCardList = ({room_id}: {room_id: number}) => {
-  const _notices = useFetch(getNoticeList, room_id);
+  const [refresh, setRefresh] = useState(0);
+  const _notices = useFetch(getNoticeList, room_id, refresh);
   return (
     <section>
       {_notices?.length ?
         _notices.map((notice) =>
           <NoticeCard
+            key={notice.id}
             {...notice}
           />
         )
         :
-        <AddNewNoticeButton />
+        <AddNewNoticeButton onSuccess={() => setRefresh(num => num + 1)} />
       }
     </section>
   )

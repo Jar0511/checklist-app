@@ -7,7 +7,9 @@ import { useEffect, useState } from "react";
  */
 export function useFetch<I, T>(
   fetch: (arg: I) => Promise<T>,
-  arg: I
+  arg: I,
+  /** refetching을 위한 옵션 */
+  key?: string | number
 ){
   function resolvePromise(result: T) {
     // promsie fulfilled
@@ -28,7 +30,7 @@ export function useFetch<I, T>(
     _setStatus("pending");
     _setPromise(fetch(arg).then(resolvePromise, rejectPromise));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [arg]);
+  }, [arg, key]);
 
   if (_status === "pending" && _promise) {
     throw _promise; // * suspense fallback *
