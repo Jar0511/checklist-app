@@ -24,6 +24,7 @@ export const CreateRoomButton = () => {
   return (
     <>
       <Modal
+        modal_id="create_new_room"
         outsideClose
         actionButtons={
           <CustomButton
@@ -50,7 +51,7 @@ export const CreateRoomButton = () => {
               })
               setLoading(false);
               revalidator.revalidate();
-              setShow(false);
+              setShow(null);
             }
           })}
           className="flex w-full gap-2"
@@ -67,7 +68,7 @@ export const CreateRoomButton = () => {
       </Modal>
       <CustomButton
         modal
-        onClick={() => setShow(true)}
+        onClick={() => setShow("create_new_room")}
         title="방 생성"
       >
         <PiPlusCircleBold />

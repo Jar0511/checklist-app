@@ -20,7 +20,7 @@ const ModalContainer = ({
   align
 }: ModalType) => {
   const setShow = useSetAtom(modalShowAtom);
-  useDismissClick(["#modal-container", ".modal-btn"], () => (outsideClose && !noDismiss && !loading) ? setShow(false) : null);
+  useDismissClick(["#modal-container", ".modal-btn"], () => (outsideClose && !noDismiss && !loading) ? setShow(null) : null);
   return (
     <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-black/50 backdrop-blur-sm">
       <div id="modal-container" className="absolute -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2 font-Pretendard text-neutral-900 dark:bg-neutral-200 w-[288px] sm:w-[300px] md:w-[420px] rounded-xl h-auto max-h-[80vh] flex flex-col gap-8 items-center">
@@ -31,7 +31,7 @@ const ModalContainer = ({
               <CustomButton
                 btnstyle="inline"
                 aria-label="close"
-                onClick={() => setShow(false)}
+                onClick={() => setShow(null)}
               >
                 <MdClose className="size-6" />
               </CustomButton>
@@ -84,7 +84,7 @@ export const Modal = (props: ModalType) => {
   return (
     <>
       {createPortal(
-        show ? <ModalContainer {...props} /> : <></>,
+        (show && show == props.modal_id) ? <ModalContainer {...props} /> : <></>,
         portal
       )}
     </>

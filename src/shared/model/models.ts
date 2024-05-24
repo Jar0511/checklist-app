@@ -24,7 +24,16 @@ export type CustomLabelType = {
   required?: boolean;
 }
 
-type CommonModal = {
+export type ModalType = {
+  /** 모달 고유 키값 */
+  modal_id: string;
+
+  type?: "basic"|"promotion",
+  /** 백그라운드 색상: only promotion */
+  bgColor?: string;
+  /** 백그라운드 이미지 url: only promotion */
+  bgImg?: string;
+
   /** 배경 클릭으로 모달을 닫을 수 있는지 여부 */
   outsideClose?: boolean;
   /** 상단 닫기 버튼 제거 여부: 이 값이 활성화되면 outsideClose는 무시됩니다 */
@@ -42,21 +51,3 @@ type CommonModal = {
   /** 내용물 정렬 방향 */
   align?: "left" | "center" | "right";
 }
-
-type BasicModal = {
-  type?: "basic"
-  /** 백그라운드 색상: only promotion */
-  bgColor?: undefined;
-  /** 백그라운드 이미지 url: only promotion */
-  bgImg?: undefined;
-}
-
-type PromotionModal = {
-  type: "promotion",
-  /** 백그라운드 색상: only promotion */
-  bgColor?: string;
-  /** 백그라운드 이미지 url: only promotion */
-  bgImg?: string;
-}
-
-export type ModalType = CommonModal & (BasicModal | PromotionModal)
