@@ -120,3 +120,26 @@ export const SearchInput = ({
     </form>
   )
 }
+
+export const CustomTextarea = forwardRef<
+  HTMLTextAreaElement,
+  HTMLAttributes<HTMLTextAreaElement> & {resizable?: boolean}
+>(({
+  className,
+  resizable,
+  ...rest
+}, ref) => {
+  return (
+    <textarea
+      ref={ref}
+      {...rest}
+      className={`${
+        className ?? ''
+      } w-full p-[0.5em] disabled:opacity-35 rounded border ${
+        className?.includes("border-") ? '' : 'border-neutral-500 dark:border-neutral-300'
+      } ${
+        resizable ? "" : "resize-none"
+      } focus:outline-none focus:border-grapefruit-400 focus:border-2 box-border disabled:cursor-not-allowed bg-[inherit]`}
+    />
+  )
+})
