@@ -1,24 +1,11 @@
 import { getRoomInfo, roomInfoAtom } from "@/entities/room";
+import { NoticeSection } from "@/features/inside-room/notice";
 import { useDebounce } from "@/shared/lib";
 import { CustomInput } from "@/shared/ui";
 import { Header } from "@/widgets/ui"
 import { useAtom } from "jotai";
 import { ChangeEvent, useEffect } from "react";
-import { AiFillNotification } from "react-icons/ai";
 import { Outlet, useParams } from "react-router-dom"
-
-const NoticeCard = () => {
-  return (
-    <div id="test_alert" className="flex items-start gap-3 p-3 text-[0.875rem] font-medium rounded-md bg-grapefruit-50">
-      <div className="text-white rounded-full bg-grapefruit-400 w-[28px] h-[28px] flex items-center justify-center">
-        <AiFillNotification className="size-[16px]" />
-      </div>
-      <p className={`pt-1 flex-1`}>
-        사랑하는사랑하는 우리우리 멤버멤버들 안녕안녕하십니까하십니까
-      </p>
-    </div>
-  )
-}
 
 const CheckItem = () => {
   return (
@@ -44,6 +31,15 @@ const CheckList = () => {
   )
 }
 
+const RoomMainPage = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <NoticeSection />
+      <CheckList/>
+    </div>
+  )
+}
+
 export const RoomWrapper = () => {
   const { room_id } = useParams();
   const [roomInfo, setRoomInfo] = useAtom(roomInfoAtom);
@@ -64,8 +60,7 @@ export const RoomWrapper = () => {
         <p>{roomInfo?.room_nm}</p>
       </Header>
       <main className="container mx-auto">
-        <NoticeCard />
-        <CheckList/>
+        <RoomMainPage />
         <Outlet />
       </main>
     </div>
