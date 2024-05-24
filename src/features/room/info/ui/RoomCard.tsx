@@ -1,10 +1,10 @@
 import { userAtom } from "@/entities/auth";
 import { getRoomMembers } from "@/features/room/info";
-import { useDismissClick } from "@/shared/lib";
+import { useDismissClick, useFetch } from "@/shared/lib";
 import { Tables } from "@/shared/model/supabase";
 import { CustomButton, DropDownWrapper, SkeletonWrapper } from "@/shared/ui";
 import { useAtomValue } from "jotai";
-import { HTMLAttributes, Suspense, useEffect, useState } from "react";
+import { HTMLAttributes, Suspense, useState } from "react";
 import { FaHouseUser, FaUserGroup } from "react-icons/fa6";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { PiCalendarStarFill } from "react-icons/pi";
@@ -16,6 +16,16 @@ const AdditionalInfo = ({children, ...rest}: HTMLAttributes<HTMLSpanElement>) =>
   </span>
 )
 
+const MemberCount = ({_id}: {_id: number}) => {
+  const _members = useFetch(getRoomMembers, _id);
+  return (
+    <>
+      <FaUserGroup />
+      {_members?.members.length}
+    </>
+  )
+}
+
 export const RoomCard = ({
   _id,
   room_nm,
@@ -24,18 +34,10 @@ export const RoomCard = ({
   current_banner_id,
   room_owner_nm
 }: Partial<Tables<"room">> & {room_owner_nm?: string | null}) => {
-  const session = useAtomValue(userAtom);
-  const [members, setMembers] = useState<null | number>(null);
-  const [openMenu, setOpenMenu] = useState(false);
+  if(!_id) throw new Error("_id 값 누락");
 
-  useEffect(() => {
-    if(_id != undefined) {
-      (async () => {
-        const { members } = await getRoomMembers(_id)
-        setMembers(members.length);
-      })()
-    }
-  }, [_id]);
+  const session = useAtomValue(userAtom);
+  const [openMenu, setOpenMenu] = useState(false);
 
   useDismissClick(`.card_menu_container`, () => setOpenMenu(false));
 
@@ -58,14 +60,13 @@ export const RoomCard = ({
         </AdditionalInfo>
         <Suspense
           fallback={
-            <SkeletonWrapper>
+            <SkeletonWrapper className="flex items-center">
               <div className="w-8 h-4" />
             </SkeletonWrapper>
           }
         >
           <AdditionalInfo title="참여자 수">
-            <FaUserGroup />
-            {members}
+            <MemberCount _id={_id} />
           </AdditionalInfo>
         </Suspense>
         <div className="relative ">
