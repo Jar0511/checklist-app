@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
  * 출처: https://fe-developers.kakaoent.com/2021/211127-211209-suspense/
  */
 export function useFetch<I, T>(
-  /**  */
   fetch: (arg: I) => Promise<T>,
   arg: I
 ){
