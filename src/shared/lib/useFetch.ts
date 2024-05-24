@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 
 /**
+ * 데이터 패칭이 진행 중일 때 프로미스를 반환하는 커스텀 훅
+ *
  * 출처: https://fe-developers.kakaoent.com/2021/211127-211209-suspense/
- * 데이터 패칭 중에 스켈레톤 UI를 보여주기 위해 커스텀 훅 추가
  */
-export function useFetch<I, T>(fetch: (arg: I) => Promise<T>, arg: I){
+export function useFetch<I, T>(
+  /**  */
+  fetch: (arg: I) => Promise<T>,
+  arg: I
+){
   function resolvePromise(result: T) {
     // promsie fulfilled
     _setStatus("fulfilled");
