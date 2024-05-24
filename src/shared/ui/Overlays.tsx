@@ -88,7 +88,5 @@ export const Modal = (props: ModalType) => {
         {createPortal(<ModalContainer {...props} />, portal)}
       </>
     )
-  } else return (
-    <></>
-  )
+  }
 }
