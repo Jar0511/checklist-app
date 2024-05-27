@@ -24,5 +24,11 @@ export function useDebounce<I>(
     }, delay ?? 300);
   }, [delay]);
 
+  useEffect(() => {
+    return () => {
+      if(timerId.current) clearTimeout(timerId.current);
+    }
+  }, [])
+
   return debouncedCallback;
 }
