@@ -7,7 +7,7 @@ export const getNoticeList = async (room_id: number) => {
     .from('notice')
     .select('*')
     .eq('room_id', room_id)
-    .order('created_at', { ascending: false });
+    .order('created_at', { ascending: true });
 
     if(error) {
       throw new Error(`공지 조회 중 오류: ${error}`)
