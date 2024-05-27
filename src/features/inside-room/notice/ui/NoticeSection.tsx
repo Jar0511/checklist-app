@@ -7,7 +7,6 @@ import { useAtomValue } from "jotai"
 import { roomInfoAtom } from "@/entities/room"
 import { AddNewNoticeButton } from "./AddNoticeButton"
 
-
 const NoticeCard = ({room_id, refresh}: {room_id: number, refresh: number}) => {
   const _notice = useFetch(getLatestNotice, room_id, refresh);
   if(_notice) {
@@ -41,7 +40,7 @@ export const NoticeSection = () => {
           </SkeletonWrapper>
         }
       >
-        <NoticeCard room_id={roomInfo?._id} refresh={refresh} />
+        <NoticeCard room_id={roomInfo._id} refresh={refresh} />
         <AddNewNoticeButton onSuccess={() => setRefresh(num => num + 1)} />
       </Suspense>
     </section>
