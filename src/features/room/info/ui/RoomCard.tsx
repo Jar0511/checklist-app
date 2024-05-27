@@ -2,7 +2,7 @@ import { userAtom } from "@/entities/auth";
 import { getRoomMembers } from "@/features/room/info";
 import { useDismissClick, useFetch } from "@/shared/lib";
 import { Tables } from "@/shared/model/supabase";
-import { CustomButton, DropDownWrapper, SkeletonWrapper } from "@/shared/ui";
+import { BasicButton, DropDownWrapper, SkeletonWrapper } from "@/shared/ui";
 import { useAtomValue } from "jotai";
 import { HTMLAttributes, Suspense, useState } from "react";
 import { FaHouseUser, FaUserGroup } from "react-icons/fa6";
@@ -70,18 +70,16 @@ export const RoomCard = ({
           </AdditionalInfo>
         </Suspense>
         <div className="relative ">
-          <CustomButton
+          <BasicButton
             aria-label="toggle menu"
-            btnstyle="inline"
-            size="sm"
-            className="hover:bg-neutral-200 dark:hover:bg-neutral-600"
+            className="p-1 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-600 text-neutral-500 dark:text-neutral-300"
             onClick={(e) => {
               e.stopPropagation();
               setOpenMenu(prev => !prev);
             }}
           >
-            <HiOutlineDotsHorizontal className="text-neutral-500 dark:text-neutral-300" />
-          </CustomButton>
+            <HiOutlineDotsHorizontal />
+          </BasicButton>
           {openMenu &&
             <DropDownWrapper
               width={"100px"}

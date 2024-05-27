@@ -1,5 +1,5 @@
 import { FolderAtom, fetchFolder } from "@/features/profile/upload";
-import { CustomButton, SearchInput } from "@/shared/ui";
+import { FilledButton, SearchInput } from "@/shared/ui";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect } from "react";
 import { HiHome } from "react-icons/hi";
@@ -20,10 +20,10 @@ export const DashboardSideMenu = () => {
 
   return (
     <aside className="w-full overflow-auto border border-solid border-neutral-200 dark:border-neutral-500 sm:w-[320px] p-6 bg-neutral-50 dark:bg-neutral-700">
-      <CustomButton aria-label="back" btnstyle="inline" className="px-0" onClick={() => navigate("/room/list")}>
+      <FilledButton aria-label="back" className="px-0" onClick={() => navigate("/room/list")}>
         <HiHome />
         <MdOutlineArrowBack />
-      </CustomButton>
+      </FilledButton>
       <SearchInput queryKey={SEARCH_KEY} realTime />
       <div className="bg-blue-300">박스</div>
       <div className="bg-blue-300">박스</div>

@@ -2,7 +2,7 @@ import { useFetch } from "@/shared/lib"
 import { AiFillNotification } from "react-icons/ai"
 import { getNoticeList, postNewNotice } from "../api"
 import { Suspense, useState } from "react"
-import { CustomButton, Modal, SkeletonWrapper } from "@/shared/ui"
+import { FilledButton, Modal, SkeletonWrapper } from "@/shared/ui"
 import { useAtomValue, useSetAtom } from "jotai"
 import { roomInfoAtom } from "@/entities/room"
 import { Tables } from "@/shared/model/supabase"
@@ -30,13 +30,14 @@ const AddNewNoticeButton = ({onSuccess}: {onSuccess: () => void}) => {
         modal_id="add_new_notice"
         outsideClose
         actionButtons={
-          <CustomButton
+          <FilledButton
+            btncolor="primary"
             type="submit"
             form="newNoticeForm"
             disabled={!isValid}
           >
             확인
-          </CustomButton>
+          </FilledButton>
         }
         loading={loading}
       >
@@ -61,14 +62,13 @@ const AddNewNoticeButton = ({onSuccess}: {onSuccess: () => void}) => {
         </form>
       </Modal>
       <div className="flex flex-wrap justify-center">
-        <CustomButton
-          btnstyle="inline"
+        <FilledButton
           modal
           onClick={() => setShow("add_new_notice")}
         >
           <MdAdd />
           신규 공지 작성하기
-        </CustomButton>
+        </FilledButton>
       </div>
     </>
   )
@@ -94,16 +94,15 @@ const NoticeCardList = ({room_id}: {room_id: number}) => {
   const _notices = useFetch(getNoticeList, room_id, refresh);
   return (
     <section>
-      {_notices?.length ?
+      {_notices?.length &&
         _notices.map((notice) =>
           <NoticeCard
             key={notice.id}
             {...notice}
           />
         )
-        :
-        <AddNewNoticeButton onSuccess={() => setRefresh(num => num + 1)} />
       }
+      <AddNewNoticeButton onSuccess={() => setRefresh(num => num + 1)} />
     </section>
   )
 }

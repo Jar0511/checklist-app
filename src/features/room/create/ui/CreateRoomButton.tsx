@@ -1,7 +1,7 @@
 import { userAtom } from "@/entities/auth";
 import { modalShowAtom, required, trimmed } from "@/shared/model";
 import { Tables } from "@/shared/model/supabase";
-import { CustomButton, CustomInput, CustomLabel, Modal } from "@/shared/ui";
+import { CustomInput, CustomLabel, FilledButton, Modal } from "@/shared/ui";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
 import { postNewRoom } from "../api";
@@ -27,13 +27,14 @@ export const CreateRoomButton = () => {
         modal_id="create_new_room"
         outsideClose
         actionButtons={
-          <CustomButton
+          <FilledButton
+            btncolor="primary"
             type="submit"
             form="newRoomForm"
             disabled={!isValid}
           >
             확인
-          </CustomButton>
+          </FilledButton>
         }
         loading={loading}
         align="left"
@@ -66,14 +67,15 @@ export const CreateRoomButton = () => {
           </CustomLabel>
         </form>
       </Modal>
-      <CustomButton
+      <FilledButton
+        btncolor="primary"
         modal
         onClick={() => setShow("create_new_room")}
         title="방 생성"
       >
         <PiPlusCircleBold />
         신규 방 생성
-      </CustomButton>
+      </FilledButton>
     </>
   )
 }

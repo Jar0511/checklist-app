@@ -2,7 +2,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { createPortal } from "react-dom";
 import { ModalType, modalShowAtom } from "../model";
 import { useDismissClick } from "../lib";
-import { CustomButton } from "./Buttons";
+import { BasicButton } from "./Buttons";
 import { MdClose } from "react-icons/md";
 import { Callout } from "./Contents";
 import { LoadingFallback } from "./Fallbacks";
@@ -28,13 +28,13 @@ const ModalContainer = ({
         <div className={`flex flex-col ${bgColor ?? ''} w-full`}>
           {!noDismiss &&
             <div className="flex flex-row-reverse px-2 pt-2">
-              <CustomButton
-                btnstyle="inline"
+              <BasicButton
                 aria-label="close"
                 onClick={() => setShow(null)}
+                className="p-2"
               >
                 <MdClose className="size-6" />
-              </CustomButton>
+              </BasicButton>
             </div>
           }
           <div

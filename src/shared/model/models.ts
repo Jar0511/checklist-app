@@ -1,18 +1,20 @@
 import { ReactNode } from "react";
 
-export type CustomButtonType = {
-  /** 버튼 스타일 종류(기본 값: inline) */
-  btnstyle?: "filled" | "outline" | "inline" | "fab";
-  /** 버튼 사이즈(기본 값: md) */
-  size?: "sm" | "md" | "lg";
-  /** fab 버튼 위치(y: top - middle - bottom, x: left - center - right, 기본값: br) */
-  position?: "tl" | "tc" | "tr" | "ml" | "mc" | "mr" | "bl" | "bc" | "br";
+export type CommonButtonType = {
   /** 버튼 색상 */
-  btncolor?: "primary" | "secondary" | "tertiary" | "danger";
+  btncolor?: "primary" | "secondary" | "tertiary";
   /** 버튼 색상 채도 */
   dim?: boolean;
   /** 모달을 여는 버튼인지 여부 */
   modal?: boolean;
+  /** 버튼 사이즈(기본 값: md) */
+  size?: "sm" | "md" | "lg";
+}
+
+export type FABType = CommonButtonType & {
+  /** fab 버튼 위치(y: top - middle - bottom, x: left - center - right, 기본값: br) */
+  position?: "tl" | "tc" | "tr" | "ml" | "mc" | "mr" | "bl" | "bc" | "br";
+  extended?: boolean;
 }
 
 export type CustomLabelType = {

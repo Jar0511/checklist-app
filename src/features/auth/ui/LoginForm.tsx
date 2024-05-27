@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { signInWithEmail } from "../api";
 import { LoginType } from "..";
 import { required } from "@/shared/model";
-import { CustomButton, CustomInput, ErrorMsg, CustomLabel, CustomLink  } from "@/shared/ui";
+import { CustomInput, ErrorMsg, CustomLabel, CustomLink, FilledButton  } from "@/shared/ui";
 import { useState } from "react";
 import { FormColWrapper, FormContainer } from "./layout";
 
@@ -43,7 +43,7 @@ export const LoginForm = () => {
           <CustomLink to="/auth/register" arrow="right">회원 가입</CustomLink>
         </div>
       </FormColWrapper>
-      <CustomButton type="submit">로그인</CustomButton>
+      <FilledButton btncolor="primary" type="submit">로그인</FilledButton>
       {!!serverErr && <ErrorMsg className="text-center">🚨 {serverErr}</ErrorMsg>}
     </FormContainer>
   )
