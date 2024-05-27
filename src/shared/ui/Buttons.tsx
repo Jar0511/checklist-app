@@ -141,7 +141,7 @@ export const FAB = forwardRef<
   )
 })
 
-/** 일반적인 버튼 */
+/** 배경이 채워진 일반적인 버튼 */
 export const FilledButton = forwardRef<
   HTMLButtonElement,
   ButtonHTMLAttributes<HTMLButtonElement> & CommonButtonType
@@ -172,6 +172,59 @@ export const FilledButton = forwardRef<
       } ${
         // background color
         makeFilledClass({className, btncolor, dim})
+      } ${
+        // radius
+        className?.includes("rounded-") ? '' : (
+          size == "lg" ? "rounded-lg":
+          size == "sm" ? "rounded" :
+          "rounded-md"
+        )
+      } ${
+        // size
+        size == "lg" ?
+          `text-[1.5em] gap-x-[0.625em] py-[0.75em] px-[1em]` :
+        size == "sm" ?
+          `text-[0.9375em] gap-x-[0.375em] py-[0.375em] px-[0.625em]` :
+          "text-[1.125em] gap-x-[0.5em] py-[0.5em] px-[0.75em]"
+      }`}
+    >
+      {children}
+    </BasicButton>
+  )
+})
+
+export const OutlinedButton = forwardRef<
+HTMLButtonElement,
+ButtonHTMLAttributes<HTMLButtonElement> & Omit<CommonButtonType, "dim"|"btncolor"> & {primary?: boolean}
+>(({
+  children,
+  type,
+  title,
+  className,
+  modal,
+  size,
+  primary,
+  ...rest
+}, ref) => {
+  return (
+    <BasicButton
+      {...rest}
+      ref={ref}
+      modal={modal}
+      type={type}
+      title={title}
+      className={`${
+        // font weight
+        className?.includes("font-") ? '' : (
+          size == "lg" ?
+            `font-bold` : `font-semibold`
+        )
+      } ${
+        size == "lg" ? "border-2" : "border"
+      } border-solid ${
+        // border
+        primary ? "border-grapefruit-500 dark:border-grapefruit-600 text-grapefruit-500 dark:text-grapefruit-600 hover:bg-grapefruit-400/20" :
+        "border-stone-700 dark:border-stone-200 hover:bg-neutral-400/25"
       } ${
         // radius
         className?.includes("rounded-") ? '' : (
