@@ -48,15 +48,12 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
     ),
   [checklist, inputText]);
   const inputRef = useRef<HTMLInputElement>(null);
-  // TODO: 입력값 추적을 다른 방식으로 구현할 것
-  const isTypingRef = useRef(false);
   const revalidator = useRevalidator()
 
   /** 입력 값 받는 핸들러 */
   const handleChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     setInputText(target.value.trim());
-    isTypingRef.current = false;
     if(target.value.trim()) {
       setSelectIndex(0);
     }
@@ -92,13 +89,11 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
       );
     } else if(e.key == "Enter") { // ↩️
       e.preventDefault();
-      console.log(`selectIndex`, selectIndex)
-      console.log(`isTypingRef.current`, isTypingRef.current)
       if(
         // 항목 선택하지 않았다면
         (selectIndex == undefined) ||
         // 내용 입력이 완료되지 않았다면
-        (isTypingRef.current)
+        (inputRef.current?.value.trim() !== inputText)
       ) {
         return;
       } else {
@@ -116,9 +111,8 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
         inputRef.current.blur();
       }
       setInputText('');
+      setFocus(false);
       return;
-    } else {
-      isTypingRef.current = true;
     }
   }
 
