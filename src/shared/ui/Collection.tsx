@@ -1,7 +1,20 @@
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { ReactNode } from "react";
 
-const Container: Variants = {
+const FadeContainer: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const PopContainer: Variants = {
   hidden: {
     opacity: 1,
     scale: 0
@@ -33,7 +46,8 @@ export const DropDownWrapper = ({
   top,
   bottom,
   left,
-  right
+  right,
+  fade
 }: {
   children: ReactNode;
   width?: string | number;
@@ -42,6 +56,7 @@ export const DropDownWrapper = ({
   bottom?: string | number;
   left?: string | number;
   right?: string | number;
+  fade?: boolean;
 }) => (
   <AnimatePresence>
     <motion.div
@@ -54,7 +69,7 @@ export const DropDownWrapper = ({
       } ${
         left == "50%" ? "-translate-x-1/2" : ''
       }`}
-      variants={Container}
+      variants={fade ? FadeContainer : PopContainer}
       initial="hidden"
       animate="visible"
       style={{
