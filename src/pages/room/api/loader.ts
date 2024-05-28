@@ -30,3 +30,17 @@ export const loadRoomList = async () => {
 
   return data.filter((d) => (!!d && !!d.room)).map(({room}) => ({...room}));
 }
+
+/** 특정 방의 전체 체크리스트 조회 */
+export const getAllChecklist = async (room_id: number) => {
+  const { data, error } = await supabase
+    .from('checklist')
+    .select('*')
+    .eq('room_id', room_id)
+
+    if(error) {
+      throw new Error(`체크리스트 조회 중 오류: ${error}`)
+    }
+
+    return data;
+}

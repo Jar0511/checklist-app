@@ -1,81 +1,206 @@
 import { roomInfoAtom } from "@/entities/room";
-import { useDebounce, useFetch } from "@/shared/lib";
+import { useDebounce, useDismissClick } from "@/shared/lib";
 import { CustomInput, DropDownWrapper, SkeletonWrapper } from "@/shared/ui"
 import { useAtomValue } from "jotai";
-import { Suspense, KeyboardEvent, useState, useEffect } from "react"
-import { getCheckWaitlist, getChecklist } from "../api";
+import { Suspense, KeyboardEvent, useState, useEffect, ReactNode, ChangeEvent, useRef, useMemo } from "react"
+import { postNewChecklist, postToggleChecklist } from "../api";
+import { MdAdd } from "react-icons/md";
+import { Tables } from "@/shared/model/supabase";
+import { Await, useLoaderData, useRevalidator } from "react-router-dom";
 
-const AddCheckListForm = ({room_id}: {room_id: number}) => {
-  const [refresh, setRefresh] = useState(0);
+const SelectItem = ({
+  children,
+  focus,
+  setFocus,
+  onClick,
+  disabled
+}: {
+  children?: string | ReactNode,
+  focus: boolean,
+  setFocus: () => void,
+  onClick: () => void,
+  disabled?: boolean
+}) => {
+  if(children !== "") {
+    return (
+      <li
+        onMouseEnter={setFocus}
+        className={`p-1 ${focus ? "bg-neutral-400/25" : ""} ${disabled ? "cursor-not-allowed opacity-30" : "cursor-pointer"}`}
+        role="button"
+        title={typeof children == "string" ? children : "추가하기"}
+        onClick={() => {disabled ? null : onClick()}}
+        aria-disabled={disabled ? "true" : "false"}
+      >
+        {disabled ? '이미 존재하는 항목입니다' : children}
+      </li>
+    )
+  }
+}
+
+const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tables<'checklist'>[]}) => {
   const [focus, setFocus] = useState(false);
   const [selectIndex, setSelectIndex] = useState<number | undefined>(undefined);
-  const _checklist = useFetch(getCheckWaitlist, room_id, refresh);
+  const [inputText, setInputText] = useState("");
+  const filteredChecklist = useMemo(() =>
+    [...checklist, null].filter((item) =>
+      !item ||
+      (item.checked && (inputText ? item?.title?.includes(inputText) : true))
+    ),
+  [checklist, inputText]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  // TODO: 입력값 추적을 다른 방식으로 구현할 것
+  const isTypingRef = useRef(false);
+  const revalidator = useRevalidator()
 
-  const handleKeyEvent = (e: KeyboardEvent<HTMLInputElement>) => {
-    if(e.key == "ArrowUp") {
-      return setSelectIndex(prev =>
-        !prev ?
-          (_checklist ? _checklist.length - 1 : undefined)
-          :
-          (prev + 1 < _checklist!.length ? prev + 1 : 0)
-      );
+  /** 입력 값 받는 핸들러 */
+  const handleChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    setInputText(target.value.trim());
+    isTypingRef.current = false;
+    if(target.value.trim()) {
+      setSelectIndex(0);
     }
-    const target = (e.target as HTMLInputElement);
-    console.log(target.value);
-    console.log(e.key)
   }
-  const debounde = useDebounce(handleKeyEvent, 1000);
+  const deboundedOnChange = useDebounce(handleChangeEvent, 500);
+
+  /** 특정 키 입력 감지하는 핸들러 */
+  const handleKeyEvent = async (e: KeyboardEvent<HTMLInputElement>) => {
+    console.log(e.key)
+    if(e.key == "ArrowUp") { // 🔼
+      e.preventDefault();
+      return setSelectIndex(prev =>
+        prev == undefined ?
+          ((filteredChecklist.length > 0) ? filteredChecklist.length - 1 : 0)
+          :
+          (
+            prev == 0 ?
+              (filteredChecklist.length > 0) ? filteredChecklist.length - 1 : undefined
+              : prev - 1
+          )
+      );
+    } else if(e.key == "ArrowDown") { // 🔽
+      e.preventDefault();
+      return setSelectIndex(prev =>
+        prev == undefined ?
+          0
+          :
+          (
+            (filteredChecklist.length > 0) ?
+            (prev + 1 > filteredChecklist.length) ? 0 : prev + 1
+            : undefined
+          )
+      );
+    } else if(e.key == "Enter") { // ↩️
+      e.preventDefault();
+      console.log(`selectIndex`, selectIndex)
+      console.log(`isTypingRef.current`, isTypingRef.current)
+      if(
+        // 항목 선택하지 않았다면
+        (selectIndex == undefined) ||
+        // 내용 입력이 완료되지 않았다면
+        (isTypingRef.current)
+      ) {
+        return;
+      } else {
+        const item = filteredChecklist[selectIndex];
+        return submit(
+          item ? item : { title: inputText, room_id },
+          item ? "select" : "new"
+        );
+      }
+    } else if(e.key == "Escape") {
+      e.preventDefault()
+      setSelectIndex(undefined);
+      if(inputRef.current) {
+        inputRef.current.value = '';
+        inputRef.current.blur();
+      }
+      setInputText('');
+      return;
+    } else {
+      isTypingRef.current = true;
+    }
+  }
+
+  /** 제출 */
+  const submit = async (body: Partial<Tables<'checklist'>>, type: "new" | "select") => {
+    switch (type) {
+      case "new":
+        return await postNewChecklist({
+          ...body,
+          room_id,
+        }).then(() => {
+          setInputText('');
+          if(inputRef.current) inputRef.current.value = '';
+          setFocus(false);
+
+          revalidator.revalidate();
+        })
+      case "select":
+        return await postToggleChecklist({
+          checked: false,
+          id: body.id!
+        }).then(() => {
+          setInputText('');
+          if(inputRef.current) inputRef.current.value = '';
+          setFocus(false);
+
+          revalidator.revalidate();
+        })
+    }
+  }
 
   useEffect(() => {
     if(!focus) setSelectIndex(undefined);
   }, [focus]);
 
+  useDismissClick('.new_check_container', () => setFocus(false));
+
   return (
-    <div className="relative">
+    <div className="relative new_check_container">
       <CustomInput
         placeholder="지금 필요한 건.."
-        // onChange={(e) => debounde(e)}
         onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        onKeyDown={(e) => debounde(e)}
+        onKeyDown={handleKeyEvent}
+        onChange={(e) => deboundedOnChange(e)}
+        ref={inputRef}
       />
       {focus &&
-        <DropDownWrapper width={"100%"} top={"100%"} left={0}>
-          text
+        <DropDownWrapper width={"100%"} top={"100%"} left={0} fade className="text-[0.9375rem]">
+          <ul className="flex flex-col">
+            {filteredChecklist.map((item, idx) =>
+              <SelectItem
+                key={item ? item.id : "create_new_checklist"}
+                focus={selectIndex == idx}
+                setFocus={() => setSelectIndex(idx)}
+                onClick={() =>
+                  item ?
+                  submit(item, "select") :
+                  submit({ title: inputText, room_id }, "new")
+                }
+                disabled={
+                  item ? false : checklist.some(({title}) => title == inputText.trim())
+                }
+              >
+                {
+                  item ? (item.title ?? "") :
+                  (
+                    inputText ?
+                    <p className="flex items-center gap-2"><MdAdd /><code>{inputText}</code> 추가하기</p>
+                    : ''
+                  )
+                }
+              </SelectItem>
+            )}
+          </ul>
         </DropDownWrapper>
       }
     </div>
   )
 }
 
-const CheckList = ({room_id, refresh}: {room_id: number, refresh: number}) => {
-  const _checklist = useFetch(getChecklist, room_id, refresh);
-
-  if((!_checklist || !_checklist.length)) {
-    return (
-      <div className="flex-1 flex items-center justify-center w-full h-full text-[0.9375rem] text-neutral-400">
-        체크리스트를 추가해보세요
-      </div>
-    )
-  } else {
-    return (
-      <ul className="">
-        {(!_checklist || !_checklist.length) &&
-          <p className="text-center">
-
-          </p>
-        }
-        {_checklist?.map((check) =>
-          <li key={check.id}></li>
-        )}
-      </ul>
-    )
-  }
-
-}
-
 export const ChecklistSection = () => {
-  const [refresh, setRefresh] = useState(0);
+  const { checklist } = useLoaderData() as { checklist: Promise<Tables<'checklist'>[]>}
   const roomInfo = useAtomValue(roomInfoAtom);
   if(!roomInfo) {
     return (<></>)
@@ -90,10 +215,25 @@ export const ChecklistSection = () => {
           </SkeletonWrapper>
         }
       >
-        <div className="flex flex-col w-full gap-2 p-4 rounded-lg min-h-60 bg-neutral-100 dark:bg-neutral-800">
-          <AddCheckListForm room_id={roomInfo._id} />
-          <CheckList room_id={roomInfo._id} refresh={refresh} />
-        </div>
+        <Await resolve={checklist}>
+          {(data: Tables<'checklist'>[]) =>
+            <div className="flex flex-col w-full gap-4 p-4 rounded-lg min-h-60 bg-neutral-100 dark:bg-neutral-800">
+              <AddCheckListForm room_id={roomInfo._id} checklist={data} />
+              {
+                data.length ?
+                <ul>
+                  {data.filter((check) => !check.checked).map((ck) =>
+                    <li key={ck.id}>{ck.title}</li>
+                  )}
+                </ul>
+                :
+                <div className="flex-1 flex items-center justify-center w-full h-full text-[0.9375rem] text-neutral-400">
+                  체크리스트를 추가해보세요
+                </div>
+              }
+            </div>
+          }
+        </Await>
       </Suspense>
     </section>
   )
