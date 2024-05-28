@@ -362,7 +362,7 @@ export type Database = {
     Functions: {
       increment_count: {
         Args: {
-          room_id: number
+          _id: number
           x: number
         }
         Returns: undefined
