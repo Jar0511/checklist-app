@@ -200,6 +200,17 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
   )
 }
 
+const CheckItem = ({ title }: Tables<'checklist'>) => {
+  return (
+    <li className="flex items-stretch gap-[4px] p-[12px] bg-white rounded-sm dark:bg-stone-700 dark:border dark:border-stone-500 font-medium text-[1.125rem]">
+      <p className="flex-1 cursor-default">
+        {title}
+      </p>
+
+    </li>
+  )
+}
+
 export const ChecklistSection = () => {
   const { checklist } = useLoaderData() as { checklist: Promise<Tables<'checklist'>[]>}
   const roomInfo = useAtomValue(roomInfoAtom);
@@ -218,13 +229,13 @@ export const ChecklistSection = () => {
       >
         <Await resolve={checklist}>
           {(data: Tables<'checklist'>[]) =>
-            <div className="flex flex-col w-full gap-4 p-4 rounded-lg min-h-60 bg-neutral-100 dark:bg-neutral-800">
+            <div className="flex flex-col w-full gap-4 p-4 rounded-lg min-h-60 bg-neutral-100 dark:bg-neutral-700/50">
               <AddCheckListForm room_id={roomInfo._id} checklist={data} />
               {
                 data.length ?
-                <ul>
+                <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-stretch gap-[8px]">
                   {data.filter((check) => !check.checked).map((ck) =>
-                    <li key={ck.id}>{ck.title}</li>
+                    <CheckItem key={ck.id} {...ck} />
                   )}
                 </ul>
                 :
