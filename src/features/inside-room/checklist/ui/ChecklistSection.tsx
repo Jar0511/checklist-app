@@ -125,7 +125,10 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
           room_id,
         }).then(() => {
           setInputText('');
-          if(inputRef.current) inputRef.current.value = '';
+          if(inputRef.current) {
+            inputRef.current.value = '';
+            inputRef.current.blur();
+          }
           setFocus(false);
 
           revalidator.revalidate();
@@ -136,8 +139,9 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
           id: body.id!
         }).then(() => {
           setInputText('');
-          if(inputRef.current) inputRef.current.value = '';
-          setFocus(false);
+          if(inputRef.current) {
+            inputRef.current.value = '';
+          }
 
           revalidator.revalidate();
         })
