@@ -186,6 +186,9 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
                 }
               </SelectItem>
             )}
+            {(filteredChecklist.length == 1 && !filteredChecklist[0] && !inputText) &&
+              <li><div className="typing-loader" /></li>
+            }
           </ul>
         </DropDownWrapper>
       }
