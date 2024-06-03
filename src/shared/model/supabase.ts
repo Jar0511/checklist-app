@@ -281,6 +281,7 @@ export type Database = {
       user: {
         Row: {
           _id: string
+          coin: number
           last_4_stacked: number
           last_5_stacked: number
           picked_4: boolean
@@ -292,6 +293,7 @@ export type Database = {
         }
         Insert: {
           _id?: string
+          coin?: number
           last_4_stacked?: number
           last_5_stacked?: number
           picked_4?: boolean
@@ -303,6 +305,7 @@ export type Database = {
         }
         Update: {
           _id?: string
+          coin?: number
           last_4_stacked?: number
           last_5_stacked?: number
           picked_4?: boolean
