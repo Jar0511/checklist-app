@@ -18,7 +18,7 @@ export const postNewChecklist = async (body: Partial<Tables<'checklist'>>) => {
 export const postToggleChecklist = async (body: Pick<Tables<'checklist'>, "checked"|"id">) => {
   const { error } = await supabase
     .from('checklist')
-    .update(body)
+    .update({'checked': body.checked})
     .eq('id', body.id)
 
     if(error) {

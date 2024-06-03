@@ -1,10 +1,10 @@
 import { roomInfoAtom } from "@/entities/room";
 import { useDebounce, useDismissClick } from "@/shared/lib";
-import { CustomInput, DropDownWrapper, SkeletonWrapper } from "@/shared/ui"
+import { BasicButton, CustomInput, DropDownWrapper, SkeletonWrapper } from "@/shared/ui"
 import { useAtomValue } from "jotai";
 import { Suspense, KeyboardEvent, useState, useEffect, ReactNode, ChangeEvent, useRef, useMemo } from "react"
 import { postNewChecklist, postToggleChecklist } from "../api";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdCheck } from "react-icons/md";
 import { Tables } from "@/shared/model/supabase";
 import { Await, useLoaderData, useRevalidator } from "react-router-dom";
 
@@ -200,13 +200,20 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
   )
 }
 
-const CheckItem = ({ title }: Tables<'checklist'>) => {
+const CheckItem = ({ title, id, reload }: Tables<'checklist'> & { reload: () => void }) => {
   return (
     <li className="flex items-stretch gap-[4px] p-[12px] bg-white rounded-sm dark:bg-stone-700 dark:border dark:border-stone-500 font-medium text-[1.125rem]">
       <p className="flex-1 cursor-default">
         {title}
       </p>
-
+      <BasicButton
+        onClick={async () => {
+          await postToggleChecklist({checked: true, id});
+          return reload();
+        }}
+      >
+        <MdCheck />
+      </BasicButton>
     </li>
   )
 }
@@ -214,6 +221,7 @@ const CheckItem = ({ title }: Tables<'checklist'>) => {
 export const ChecklistSection = () => {
   const { checklist } = useLoaderData() as { checklist: Promise<Tables<'checklist'>[]>}
   const roomInfo = useAtomValue(roomInfoAtom);
+  const revalidator = useRevalidator();
   if(!roomInfo) {
     return (<></>)
   }
@@ -235,7 +243,11 @@ export const ChecklistSection = () => {
                 data.length ?
                 <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-stretch gap-[8px]">
                   {data.filter((check) => !check.checked).map((ck) =>
-                    <CheckItem key={ck.id} {...ck} />
+                    <CheckItem
+                      key={ck.id}
+                      {...ck}
+                      reload={() => revalidator.revalidate()}
+                    />
                   )}
                 </ul>
                 :
