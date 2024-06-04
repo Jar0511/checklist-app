@@ -1,5 +1,5 @@
 import { supabase } from "@/shared/api";
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 
 export const postNewRoom = async (req: Partial<Tables<"room">>) => {
   const { data, error } = await supabase

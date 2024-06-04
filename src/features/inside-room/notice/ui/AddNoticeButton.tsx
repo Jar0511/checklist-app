@@ -1,4 +1,4 @@
-import { Tables } from "@/shared/model/supabase"
+import type { Tables } from "@/shared/model/supabase"
 import { MdAdd } from "react-icons/md"
 import { modalShowAtom, required, trimmed } from "@/shared/model"
 import { useForm } from "react-hook-form"

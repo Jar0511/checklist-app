@@ -1,6 +1,6 @@
-import { HTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, type InputHTMLAttributes, forwardRef } from "react";
 import { Callout, ErrorMsg } from ".";
-import { CustomLabelType, required } from "../model";
+import { type CustomLabelType, required } from "../model";
 import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { MdOutlineSearch } from "react-icons/md";

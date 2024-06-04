@@ -1,5 +1,5 @@
 import { supabase } from "@/shared/api";
-import { LoginType, RegisterType } from "..";
+import type { LoginType, RegisterType } from "..";
 
 export async function signInWithEmail(params: LoginType) {
   return await supabase.auth.signInWithPassword(params);

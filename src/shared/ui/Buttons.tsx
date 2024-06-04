@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes, Children, forwardRef } from "react";
-import { CommonButtonType, FABType } from "../model";
+import { type ButtonHTMLAttributes, Children, forwardRef } from "react";
+import type { CommonButtonType, FABType } from "../model";
 import { consoleWarn } from "../lib";
 
 /** 배경 색이 들어가는 버튼을 위한 배경 색 클래스 생성 함수 */

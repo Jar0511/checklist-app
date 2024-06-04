@@ -1,6 +1,6 @@
 import { SESSION_KEY } from "@/entities/auth"
 import { supabase } from "@/shared/api";
-import { Session } from "@supabase/supabase-js";
+import type { Session } from "@supabase/supabase-js";
 
 /** 방 목록 조회 쿼리 */
 export const loadRoomList = async () => {

@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { Link, LinkProps } from "react-router-dom";
-import { HTMLAttributes, ReactNode } from "react";
-import { IconType } from "react-icons";
+import { Link, type LinkProps } from "react-router-dom";
+import type { HTMLAttributes, ReactNode } from "react";
+import type { IconType } from "react-icons";
 import { FaUser } from "react-icons/fa6";
 
 export const ProfileIcon = ({url, bg, size = "sm"}: {url?: string | null; size?: "lg" | "sm"; bg?: string | null}) => {

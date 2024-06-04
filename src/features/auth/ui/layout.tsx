@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react"
+import type { HTMLAttributes, ReactNode } from "react"
 
 export const FormContainer = ({heading, children, ...rest}: {heading: string} & HTMLAttributes<HTMLFormElement>) => {
   return (

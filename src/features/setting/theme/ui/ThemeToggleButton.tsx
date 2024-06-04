@@ -1,9 +1,9 @@
 import { useAtom } from "jotai"
 import { currentThemeAtom } from "../model/store"
-import { HTMLAttributes, useEffect } from "react";
+import { type HTMLAttributes, useEffect } from "react";
 import { BasicButton, FAB } from "@/shared/ui";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { FABType } from "@/shared/model";
+import type { FABType } from "@/shared/model";
 
 export const ThemeToggleButton = ({
   fab = true,

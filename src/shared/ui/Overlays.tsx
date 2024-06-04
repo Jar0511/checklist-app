@@ -1,6 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { createPortal } from "react-dom";
-import { ModalType, modalShowAtom } from "../model";
+import { type ModalType, modalShowAtom } from "../model";
 import { useDismissClick } from "../lib";
 import { BasicButton } from "./Buttons";
 import { MdClose } from "react-icons/md";

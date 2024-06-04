@@ -1,6 +1,6 @@
 import { userAtom } from "@/entities/auth";
 import { modalShowAtom, required, trimmed } from "@/shared/model";
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 import { CustomInput, CustomLabel, FilledButton, Modal } from "@/shared/ui";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";

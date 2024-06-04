@@ -1,5 +1,5 @@
 import { supabase } from "@/shared/api"
-import { Tables } from "@/shared/model/supabase"
+import type { Tables } from "@/shared/model/supabase"
 
 /** 방의 설명 및 이름을 업데이트하는 쿼리. 업데이트하는 항목이 null일 경우 해당 항목을 제외합니다. */
 export const postUpdateRoomName = async ({_id, room_nm, room_desc}: Pick<Tables<"room">, "_id"|"room_nm"|"room_desc">) => {

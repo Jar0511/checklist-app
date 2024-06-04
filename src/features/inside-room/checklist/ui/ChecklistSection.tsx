@@ -2,10 +2,10 @@ import { roomInfoAtom } from "@/entities/room";
 import { useDebounce, useDismissClick } from "@/shared/lib";
 import { BasicButton, CustomInput, DropDownWrapper, SkeletonWrapper } from "@/shared/ui"
 import { useAtomValue } from "jotai";
-import { Suspense, KeyboardEvent, useState, useEffect, ReactNode, ChangeEvent, useRef, useMemo } from "react"
+import { Suspense, type KeyboardEvent, useState, useEffect, type ReactNode, type ChangeEvent, useRef, useMemo } from "react"
 import { postNewChecklist, postToggleChecklist } from "../api";
 import { MdAdd, MdCheck } from "react-icons/md";
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 import { Await, useLoaderData, useRevalidator } from "react-router-dom";
 
 const SelectItem = ({

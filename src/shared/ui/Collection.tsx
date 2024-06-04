@@ -1,5 +1,5 @@
-import { AnimatePresence, Variants, motion } from "framer-motion";
-import { ReactNode } from "react";
+import { AnimatePresence, type Variants, motion } from "framer-motion";
+import type { ReactNode } from "react";
 
 const FadeContainer: Variants = {
   hidden: {

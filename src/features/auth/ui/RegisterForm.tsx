@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { RegisterType } from "../model/models"
+import type { RegisterType } from "../model/models"
 import { CustomInput, CustomLabel, ErrorMsg, CustomLink, FilledButton } from "@/shared/ui";
 import { signUpWithEmail } from "../api";
 import { useState } from "react";

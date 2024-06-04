@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type CommonButtonType = {
   /** 버튼 색상 */

@@ -1,4 +1,4 @@
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 import { atomWithStorage } from "jotai/utils";
 
 export const USER_KEY = "storedUser";

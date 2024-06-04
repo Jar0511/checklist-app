@@ -1,5 +1,5 @@
 import { supabase } from "@/shared/api"
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 
 /** 최근 공지 조회 쿼리 */
 export const getLatestNotice = async (room_id: number) => {

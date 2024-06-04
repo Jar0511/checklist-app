@@ -1,10 +1,10 @@
 import { userAtom } from "@/entities/auth";
 import { getRoomMembers } from "@/features/room/info";
 import { useDismissClick, useFetch } from "@/shared/lib";
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 import { BasicButton, DropDownWrapper, SkeletonWrapper } from "@/shared/ui";
 import { useAtomValue } from "jotai";
-import { HTMLAttributes, Suspense, useState } from "react";
+import { type HTMLAttributes, Suspense, useState } from "react";
 import { FaHouseUser, FaUserGroup } from "react-icons/fa6";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { PiCalendarStarFill } from "react-icons/pi";

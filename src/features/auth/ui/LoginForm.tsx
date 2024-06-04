@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { signInWithEmail } from "../api";
-import { LoginType } from "..";
+import type { LoginType } from "..";
 import { required } from "@/shared/model";
 import { CustomInput, ErrorMsg, CustomLabel, CustomLink, FilledButton  } from "@/shared/ui";
 import { useState } from "react";

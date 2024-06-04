@@ -1,5 +1,5 @@
 import { supabase } from "@/shared/api"
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 
 /** 신규 체크리스트 추가 */
 export const postNewChecklist = async (body: Partial<Tables<'checklist'>>) => {

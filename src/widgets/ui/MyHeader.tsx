@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import { userInfoAtom } from "@/entities/user";
 import { BasicButton, DropDownWrapper, ProfileIcon } from "@/shared/ui";
-import { ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { ThemeToggleButton, currentThemeAtom } from "@/features/setting/theme";
 

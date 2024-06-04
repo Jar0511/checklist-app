@@ -1,4 +1,4 @@
-import { Tables } from "@/shared/model/supabase";
+import type { Tables } from "@/shared/model/supabase";
 
 export type Room = Partial<
   Omit<Tables<"room">, "room_owner_id"> &
