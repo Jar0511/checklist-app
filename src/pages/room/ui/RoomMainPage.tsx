@@ -1,6 +1,7 @@
 import { getRoomInfo, roomInfoAtom } from "@/entities/room";
 import { ChecklistSection } from "@/features/checklist";
 import { NoticeSection } from "@/features/notice";
+import { WishBanner } from "@/features/profile/wish";
 import { Header } from "@/widgets/ui"
 import { useAtom } from "jotai";
 import { useEffect } from "react";
@@ -10,6 +11,7 @@ const RoomMainPage = () => {
   return (
     <div className="flex flex-col gap-4">
       <NoticeSection />
+      <WishBanner />
       <ChecklistSection />
     </div>
   )
