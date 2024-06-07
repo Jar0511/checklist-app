@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { supabase } from '@/shared/api'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAtom } from 'jotai';
-import { userAtom, SESSION_KEY } from '@/entities/auth';
+import { userAtom, SESSION_KEY, detectSessionAtom } from '@/entities/auth';
 import { USER_KEY, getMyInfo, userInfoAtom } from '@/entities/user';
 
 export function App() {
   const [userInfo, setUserInfo] = useAtom(userInfoAtom);
   const [session, setSession] = useAtom(userAtom);
-  const [detectSession, setDetectSession] = useState(false);
+  const [detectSession, setDetectSession] = useAtom(detectSessionAtom);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
