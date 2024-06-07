@@ -37,6 +37,8 @@ export const getAllChecklist = async (room_id: number) => {
     .from('checklist')
     .select('*')
     .eq('room_id', room_id)
+    // 많이 체크된 것 우선(드롭다운 목록 규칙)
+    .order('count', { ascending: false })
 
     if(error) {
       throw new Error(`체크리스트 조회 중 오류: ${error}`)
