@@ -7,7 +7,7 @@ import { RoomCard } from "@/features/room/info";
 export const RoomListPage = () => {
   const navigate = useNavigate();
   const loadData = useLoaderData() as Room[];
-  console.log(loadData);
+
   return (
     <div className="relative flex flex-col w-full h-full overflow-auto">
       <Header logo />
