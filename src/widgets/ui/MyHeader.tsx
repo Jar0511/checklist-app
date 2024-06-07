@@ -4,6 +4,7 @@ import { BasicButton, DropDownWrapper, ProfileIcon } from "@/shared/ui";
 import { type ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { ThemeToggleButton, currentThemeAtom } from "@/features/setting/theme";
+import { LogoutButton } from "@/features/auth";
 
 export const Header = ({logo, className, children}: {logo?: boolean; className?: string; children?: ReactNode;}) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -42,9 +43,12 @@ const UserMenu = () => {
       <ul className="text-[0.9375rem] flex flex-col gap-y-1 pt-[20px] hover:*:bg-neutral-900/10 dark:hover:*:bg-neutral-50/15 *:cursor-pointer *:px-[2px] *:rounded *:leading-6 *:transition-all">
         <li>내 정보</li>
         <li>
-          <ThemeToggleButton fab={false} className="flex items-center justify-between w-full font-base">
+          <ThemeToggleButton fab={false} className="flex items-center justify-between w-full font-normal">
             <p>{darkMode == "light" ? "다크" : "라이트"}모드</p>
           </ThemeToggleButton>
+        </li>
+        <li>
+          <LogoutButton className="justify-between w-full font-normal" />
         </li>
       </ul>
     </DropDownWrapper>
