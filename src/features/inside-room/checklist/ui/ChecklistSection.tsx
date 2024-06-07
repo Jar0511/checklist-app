@@ -67,7 +67,6 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
 
   /** 특정 키 입력 감지하는 핸들러 */
   const handleKeyEvent = async (e: KeyboardEvent<HTMLInputElement>) => {
-    console.log(e.key)
     if(e.key == "ArrowUp") { // 🔼
       e.preventDefault();
       return setSelectIndex(prev =>
