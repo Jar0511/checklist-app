@@ -8,8 +8,7 @@ import type { FABType } from "@/shared/model";
 export const ThemeToggleButton = ({
   fab = true,
   size = "lg",
-  children,
-  ...rest
+  className
 }:
   Partial<FABType> &
   {fab?: boolean} &
@@ -31,7 +30,6 @@ export const ThemeToggleButton = ({
         onClick={() => setTheme(pre => pre == "light" ? "dark" : "light")}
         size={size}
         aria-label="toggle app theme"
-        {...rest}
       >
         {theme == "light" ? <MdOutlineDarkMode className="pointer-events-none" /> : <MdOutlineLightMode className="pointer-events-none" />}
       </FAB>
@@ -41,9 +39,9 @@ export const ThemeToggleButton = ({
       <BasicButton
         onClick={() => setTheme(pre => pre == "light" ? "dark" : "light")}
         aria-label="toggle app theme"
-        {...rest}
+        className={`flex items-center ${className ?? ""}`}
       >
-        {children}
+        <p>{theme == "light" ? "다크" : "라이트"}모드</p>
         {theme == "light" ? <MdOutlineDarkMode className="pointer-events-none" /> : <MdOutlineLightMode className="pointer-events-none" />}
       </BasicButton>
     )

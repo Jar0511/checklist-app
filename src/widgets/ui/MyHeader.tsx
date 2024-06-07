@@ -3,7 +3,7 @@ import { userInfoAtom } from "@/entities/user";
 import { BasicButton, DropDownWrapper, ProfileIcon } from "@/shared/ui";
 import { type ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
-import { ThemeToggleButton, currentThemeAtom } from "@/features/setting/theme";
+import { ThemeToggleButton } from "@/features/setting/theme";
 import { LogoutButton } from "@/features/auth";
 
 export const Header = ({logo, className, children}: {logo?: boolean; className?: string; children?: ReactNode;}) => {
@@ -35,21 +35,15 @@ export const Header = ({logo, className, children}: {logo?: boolean; className?:
 }
 
 const UserMenu = () => {
-  const darkMode = useAtomValue(currentThemeAtom);
   const userInfo = useAtomValue(userInfoAtom);
+  const listButtonClass = "justify-between w-full font-normal";
   return (
     <DropDownWrapper right={0}>
       <h2 className="font-bold cursor-default text-[1.0625rem] border-b border-solid border-neutral-200 dark:border-neutral-500 pb-[10px]">{userInfo?.user_nm}</h2>
       <ul className="text-[0.9375rem] flex flex-col gap-y-1 pt-[20px] hover:*:bg-neutral-900/10 dark:hover:*:bg-neutral-50/15 *:cursor-pointer *:px-[2px] *:rounded *:leading-6 *:transition-all">
         <li>내 정보</li>
-        <li>
-          <ThemeToggleButton fab={false} className="flex items-center justify-between w-full font-normal">
-            <p>{darkMode == "light" ? "다크" : "라이트"}모드</p>
-          </ThemeToggleButton>
-        </li>
-        <li>
-          <LogoutButton className="justify-between w-full font-normal" />
-        </li>
+        <li><ThemeToggleButton fab={false} className={listButtonClass}/></li>
+        <li><LogoutButton className={listButtonClass}/></li>
       </ul>
     </DropDownWrapper>
   )
