@@ -13,15 +13,20 @@ const SelectItem = ({
   focus,
   setFocus,
   onClick,
-  disabled
+  disabled,
+  hidden
 }: {
   children?: string | ReactNode,
   focus: boolean,
   setFocus: () => void,
   onClick: () => void,
-  disabled?: boolean
+  disabled?: boolean,
+  hidden?: boolean,
 }) => {
   if(children !== "") {
+    if(disabled && hidden) {
+      return (<></>)
+    }
     return (
       <li
         onMouseEnter={setFocus}
@@ -179,6 +184,7 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
                 disabled={
                   item ? false : checklist.some(({title}) => title == inputText.trim())
                 }
+                hidden={checklist.some(({ title, checked }) => title == inputText.trim() && checked)}
               >
                 {
                   item ? (item.title ?? "") :
