@@ -16,3 +16,7 @@ export async function signUpWithEmail(params: RegisterType) {
     }
   })
 }
+
+export async function logOut() {
+  return await supabase.auth.signOut()
+}
