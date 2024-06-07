@@ -53,7 +53,7 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
     ),
   [checklist, inputText]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const revalidator = useRevalidator()
+  const revalidator = useRevalidator();
 
   /** 입력 값 받는 핸들러 */
   const handleChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,33 +122,29 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
 
   /** 제출 */
   const submit = async (body: Partial<Tables<'checklist'>>, type: "new" | "select") => {
-    switch (type) {
-      case "new":
-        return await postNewChecklist({
+    try {
+      if(type == "new") {
+        await postNewChecklist({
           ...body,
           room_id,
-        }).then(() => {
-          setInputText('');
-          if(inputRef.current) {
-            inputRef.current.value = '';
-            inputRef.current.blur();
-          }
-          setFocus(false);
-
-          revalidator.revalidate();
-        })
-      case "select":
-        return await postToggleChecklist({
+        });
+      } else {
+        await postToggleChecklist({
           checked: false,
           id: body.id!
-        }).then(() => {
-          setInputText('');
-          if(inputRef.current) {
-            inputRef.current.value = '';
-          }
+        });
+      }
 
-          revalidator.revalidate();
-        })
+      setInputText('');
+      if(inputRef.current) {
+        inputRef.current.value = '';
+        if(type == "new") inputRef.current.blur();
+      }
+      if(type == "new") setFocus(false);
+
+      revalidator.revalidate();
+    } catch (e) {
+      throw new Error(`에러: ${e}`)
     }
   }
 
