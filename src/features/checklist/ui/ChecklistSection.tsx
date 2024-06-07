@@ -203,7 +203,11 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
 
 const CheckItem = ({ title, id, reload }: Tables<'checklist'> & { reload: () => void }) => {
   return (
-    <li className="flex items-stretch gap-[4px] p-[12px] bg-white rounded-sm dark:bg-stone-700 dark:border dark:border-stone-500 font-medium text-[1.125rem]">
+    <li
+      className="flex items-stretch gap-[4px] p-[12px] bg-white rounded-sm dark:bg-stone-700 dark:border dark:border-stone-500 font-medium text-[1.125rem]"
+      onClick={() => console.log('click the item')}
+      onMouseDown={() => console.log('hold the item')}
+    >
       <p className="flex-1 cursor-default">
         {title}
       </p>

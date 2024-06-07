@@ -1,6 +1,6 @@
 import { getRoomInfo, roomInfoAtom } from "@/entities/room";
-import { ChecklistSection } from "@/features/inside-room/checklist";
-import { NoticeSection } from "@/features/inside-room/notice";
+import { ChecklistSection } from "@/features/checklist";
+import { NoticeSection } from "@/features/notice";
 import { Header } from "@/widgets/ui"
 import { useAtom } from "jotai";
 import { useEffect } from "react";
