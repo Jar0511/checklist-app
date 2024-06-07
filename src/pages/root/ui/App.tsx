@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { supabase } from '@/shared/api'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAtom } from 'jotai';
@@ -8,14 +8,24 @@ import { USER_KEY, getMyInfo, userInfoAtom } from '@/entities/user';
 export function App() {
   const [userInfo, setUserInfo] = useAtom(userInfoAtom);
   const [session, setSession] = useAtom(userAtom);
+  const [detectSession, setDetectSession] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   // 세션 구독
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log(event, session);
-      setSession(session);
+      if(event == "SIGNED_OUT") {
+        setSession(null);
+      } else {
+        if(
+          event == "INITIAL_SESSION" ||
+          event == "SIGNED_IN"
+        ) {
+          setDetectSession(true);
+        }
+        setSession(session);
+      }
     })
 
     return () => {
@@ -28,15 +38,18 @@ export function App() {
 
   // 세션 여부에 따른 리다이렉트 처리
   useEffect(() => {
-    const _local = JSON.parse(localStorage.getItem(SESSION_KEY) ?? 'null');
-    console.log(`_local`, _local)
-    if(pathname.includes("auth") && !!session) {
-      return navigate("/room/list");
-    }else if(!pathname.includes("auth") && (!session && !_local)) {
-      return navigate("/auth/login");
+    if(detectSession) {
+      const _local = JSON.parse(localStorage.getItem(SESSION_KEY) ?? 'null');
+      if(pathname.includes("auth") && !!session) {
+        return navigate("/room/list");
+      }else if(!pathname.includes("auth") && (!session && !_local)) {
+        return navigate("/auth/login");
+      }
+
+      setDetectSession(false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session, pathname]);
+  }, [session, pathname, detectSession]);
 
   // 세션 여부에 따른 사용자 정보 처리
   useEffect(() => {
