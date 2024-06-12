@@ -47,18 +47,18 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
     /** 존재하는 항목을 입력했는지 여부 */
     const IsExistName = checklist.some(({ title, checked }) => title == inputText.trim() && checked);
     return [
-      ...checklist,
       // 중복
       "duplicate",
       // 신규
       "new",
+      ...checklist,
     ].filter((item) =>
       // 중복 경고
       (IsDuplicateName && item === "duplicate") ||
       // 신규 추가
       (!IsDuplicateName && !IsExistName && item === "new" && !!inputText.trim()) ||
       (typeof item !== "string" && item.checked && (inputText ? item?.title?.includes(inputText) : true))
-    )
+    ).slice(0,11);
   },
   [checklist, inputText]);
   const inputRef = useRef<HTMLInputElement>(null);
