@@ -14,29 +14,24 @@ const SelectItem = ({
   setFocus,
   onClick,
   disabled,
-  hidden
 }: {
   children?: string | ReactNode,
   focus: boolean,
   setFocus: () => void,
   onClick: () => void,
   disabled?: boolean,
-  hidden?: boolean,
 }) => {
   if(children !== "") {
-    if(disabled && hidden) {
-      return (<></>)
-    }
     return (
       <li
         onMouseEnter={setFocus}
-        className={`p-1 ${focus ? "bg-neutral-400/25" : ""} ${disabled ? "cursor-not-allowed opacity-30" : "cursor-pointer"}`}
+        className={`p-1 ${disabled ? "cursor-not-allowed opacity-30" : `${focus ? "bg-neutral-400/25" : ""} cursor-pointer`}`}
         role="button"
         title={typeof children == "string" ? children : "추가하기"}
         onClick={() => {disabled ? null : onClick()}}
         aria-disabled={disabled ? "true" : "false"}
       >
-        {disabled ? '이미 존재하는 항목입니다' : children}
+        {children}
       </li>
     )
   }
@@ -46,11 +41,25 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
   const [focus, setFocus] = useState(false);
   const [selectIndex, setSelectIndex] = useState<number | undefined>(undefined);
   const [inputText, setInputText] = useState("");
-  const filteredChecklist = useMemo(() =>
-    [...checklist, null].filter((item) =>
-      !item ||
-      (item.checked && (inputText ? item?.title?.includes(inputText) : true))
-    ),
+  const filteredChecklist = useMemo(() => {
+    /** 중복되는 항목을 입력했는지 여부 */
+    const IsDuplicateName = checklist.some(({ title, checked }) => title == inputText.trim() && !checked);
+    /** 존재하는 항목을 입력했는지 여부 */
+    const IsExistName = checklist.some(({ title, checked }) => title == inputText.trim() && checked);
+    return [
+      ...checklist,
+      // 중복
+      "duplicate",
+      // 신규
+      "new",
+    ].filter((item) =>
+      // 중복 경고
+      (IsDuplicateName && item === "duplicate") ||
+      // 신규 추가
+      (!IsDuplicateName && !IsExistName && item === "new" && !!inputText.trim()) ||
+      (typeof item !== "string" && item.checked && (inputText ? item?.title?.includes(inputText) : true))
+    )
+  },
   [checklist, inputText]);
   const inputRef = useRef<HTMLInputElement>(null);
   const revalidator = useRevalidator();
@@ -87,7 +96,7 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
           :
           (
             (filteredChecklist.length > 0) ?
-            (prev + 1 > filteredChecklist.length) ? 0 : prev + 1
+            (prev + 1 >= filteredChecklist.length) ? 0 : prev + 1
             : undefined
           )
       );
@@ -102,9 +111,11 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
         return;
       } else {
         const item = filteredChecklist[selectIndex];
+        if(item === "duplicate") return;
+
         return submit(
-          item ? item : { title: inputText, room_id },
-          item ? "select" : "new"
+          typeof item == "string" ? { title: inputText, room_id }: item ,
+          typeof item == "string" ? "new": "select"
         );
       }
     } else if(e.key == "Escape") {
@@ -168,26 +179,30 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
           <ul className="flex flex-col">
             {filteredChecklist.map((item, idx) =>
               <SelectItem
-                key={item ? item.id : "create_new_checklist"}
+                key={typeof item == "string" ? item : item.id}
                 focus={selectIndex == idx}
                 setFocus={() => setSelectIndex(idx)}
                 onClick={() =>
-                  item ?
-                  submit(item, "select") :
-                  submit({ title: inputText, room_id }, "new")
+                  typeof item == "string" ?
+                  (
+                    item == "duplicate" ?
+                    null : submit({ title: inputText, room_id }, "new")
+                  )
+                  :
+                  submit(item, "select")
                 }
-                disabled={
-                  item ? false : checklist.some(({title}) => title == inputText.trim())
-                }
-                hidden={checklist.some(({ title, checked }) => title == inputText.trim() && checked)}
+                disabled={item === "duplicate"}
               >
                 {
-                  item ? (item.title ?? "") :
-                  (
-                    inputText ?
-                    <p className="flex items-center gap-2"><MdAdd /><code>{inputText}</code> 추가하기</p>
-                    : ''
-                  )
+                  typeof item == "string" ?
+                  (item == "new" ?
+                    <p className="flex items-center gap-2">
+                      <MdAdd /><code>{inputText}</code> 추가하기
+                    </p>
+                    :
+                    "이미 존재하는 항목입니다"
+                  ) :
+                  (item.title ?? "")
                 }
               </SelectItem>
             )}
