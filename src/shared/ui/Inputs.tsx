@@ -1,4 +1,4 @@
-import { type HTMLAttributes, type InputHTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, type InputHTMLAttributes, forwardRef, useEffect } from "react";
 import { Callout, ErrorMsg } from ".";
 import { type CustomLabelType, required } from "../model";
 import { useSearchParams } from "react-router-dom";
@@ -106,10 +106,20 @@ export const SearchInput = ({
 }) => {
   const {
     register,
-    handleSubmit
+    handleSubmit,
+    setValue
   } = useForm<{search: string}>()
   const [searchParam, setSearchParam] = useSearchParams();
   const reg = register("search", {required, onChange: (e) => realTime ? setSearchParam({...Object.fromEntries(searchParam), [queryKey]: e.currentTarget.value.trim()}) : null});
+
+  useEffect(() => {
+    const _value = searchParam.get(queryKey);
+    if(realTime && !!_value) {
+      setValue("search", _value);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [realTime, searchParam, queryKey]);
+
   return (
     <form
       className="relative group"
