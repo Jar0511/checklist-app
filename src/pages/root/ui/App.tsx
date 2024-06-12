@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { supabase } from '@/shared/api'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, useRevalidator } from 'react-router-dom'
 import { useAtom } from 'jotai';
 import { userAtom, SESSION_KEY, detectSessionAtom } from '@/entities/auth';
 import { USER_KEY, getMyInfo, userInfoAtom } from '@/entities/user';
@@ -11,6 +11,7 @@ export function App() {
   const [detectSession, setDetectSession] = useAtom(detectSessionAtom);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const revalidate = useRevalidator();
 
   // 세션 구독
   useEffect(() => {
@@ -63,6 +64,14 @@ export function App() {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo, session]);
+
+  // window focus 이벤트 발생할 때마다(활성화된 창으로 돌아올 때마다) loader 재호출
+  useEffect(() => {
+    const reload = () => revalidate.revalidate();
+    window.addEventListener("focus", reload);
+    return () => window.removeEventListener("focus", reload);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className='flex justify-center w-screen h-screen bg-white font-Pretendard text-neutral-900 dark:bg-stone-900 dark:text-stone-50'>
