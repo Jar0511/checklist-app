@@ -58,9 +58,7 @@ export const DashboardSideMenu = () => {
             </button>
           </>
         }
-
       </div>
-
   </aside>
   )
 }
