@@ -39,7 +39,7 @@ const UserMenu = () => {
   const listButtonClass = "justify-between w-full font-normal";
   return (
     <DropDownWrapper right={0}>
-      <h2 className="font-bold cursor-default text-[1.0625rem] border-b border-solid border-neutral-200 dark:border-neutral-500 pb-[10px]">{userInfo?.user_nm}</h2>
+      <h2 className="font-bold cursor-default text-[1.0625rem] border-b border-solid border-neutral-200 dark:border-neutral-400 pb-[10px]">{userInfo?.user_nm}</h2>
       <ul className="text-[0.9375rem] flex flex-col gap-y-1 pt-[20px] hover:*:bg-neutral-900/10 dark:hover:*:bg-neutral-50/15 *:cursor-pointer *:px-[2px] *:rounded *:leading-6 *:transition-all">
         <li>내 정보</li>
         <li><ThemeToggleButton fab={false} className={listButtonClass}/></li>

@@ -23,7 +23,7 @@ const ModalContainer = ({
   useDismissClick(["#modal-container", ".modal-btn"], () => (outsideClose && !noDismiss && !loading) ? setShow(null) : null);
   return (
     <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-black/50 backdrop-blur-sm">
-      <div id="modal-container" className="absolute -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2 font-Pretendard text-neutral-900 dark:bg-neutral-200 w-[288px] sm:w-[300px] md:w-[420px] rounded-xl h-auto max-h-[80vh] flex flex-col gap-8 items-center">
+      <div id="modal-container" className="absolute -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2 font-Pretendard text-neutral-900 dark:text-stone-50 dark:bg-neutral-800 dark:border dark:border-neutral-400 w-[288px] sm:w-[300px] md:w-[420px] rounded-xl h-auto max-h-[80vh] flex flex-col gap-8 items-center">
         {loading && <LoadingFallback className="absolute" blur />}
         <div className={`flex flex-col ${bgColor ?? ''} w-full`}>
           {!noDismiss &&
@@ -50,12 +50,12 @@ const ModalContainer = ({
               '[&_h3]:font-bold [&_h3]:text-2xl [&_h3]:order-1'
             } ${
               // 텍스트 스타일링
-              '[&_p]:text-neutral-500 [&_p]:order-3'
+              '[&_p]:text-neutral-500 dark:[&_p]:text-neutral-400 [&_p]:order-3'
             } *:order-last text-[0.9375rem]`}
           >
             {
               (import.meta.env.MODE === "development") &&
-              <Callout className="w-full bg-amber-100">
+              <Callout type="warn" className="w-full">
                 스타일링 적용을 위해 아래의 규칙을 지켜주세요<br />(이 경고는 개발 모드에서만 표시됩니다)
                 <ol className="list-decimal list-inside">
                   <li>타이틀은 <code>h3</code> 태그로 감싸주세요</li>

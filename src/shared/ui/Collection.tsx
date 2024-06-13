@@ -60,7 +60,7 @@ export const DropDownWrapper = ({
 }) => (
   <AnimatePresence>
     <motion.div
-      className={`absolute shadow-md mt-[2px] border border-solid border-neutral-200 dark:border-neutral-500 bg-white dark:bg-stone-700 rounded-md py-[12px] ${
+      className={`absolute shadow-md mt-[2px] border border-solid border-neutral-200 dark:border-neutral-400 bg-white dark:bg-stone-700 rounded-md py-[12px] ${
         top == "50%" ? "-translate-y-1/2" : ''
       } ${
         bottom == "50%" ? "translate-y-1/2" : ''

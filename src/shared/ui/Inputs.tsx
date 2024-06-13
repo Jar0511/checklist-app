@@ -20,7 +20,7 @@ InputHTMLAttributes<HTMLInputElement> & {label?: string, err?: string, showErr?:
       {
         import.meta.env.MODE === "development" &&
         (type == "week" || type == "month") ?
-        <Callout className="bg-amber-100">
+        <Callout type="warn">
           해당 타입은 브라우저마다 다른 입력값을 받을 수 있습니다(이 경고는 개발 모드에서만 표시됩니다).
         </Callout>
         :
@@ -41,7 +41,7 @@ InputHTMLAttributes<HTMLInputElement> & {label?: string, err?: string, showErr?:
           type == "number" ? "number-appearance-none" : ""
         } ${
           type == "color" ? "color-appearance-none w-10 h-10" : `w-full disabled:opacity-35 rounded m-[auto_0] h-[2.125em] px-[0.5em] border ${
-            className?.includes("border-") ? '' : 'border-neutral-500 dark:border-neutral-300'
+            className?.includes("border-") ? '' : 'border-neutral-500 dark:border-neutral-400'
           } ${err ? 'bg-red-500/25': ''}`
         } focus:outline-none focus:border-grapefruit-400 focus:border-2 box-border disabled:cursor-not-allowed bg-[inherit]`}
       />
@@ -63,7 +63,7 @@ export const CustomLabel = forwardRef<HTMLLabelElement, HTMLAttributes<HTMLLabel
       {
         import.meta.env.MODE === "development" &&
         !(Array.isArray(children) && children.some((child) => child.type === "span")) ?
-        <Callout className="bg-amber-100">
+        <Callout type="warn">
           라벨 텍스트에 대한 스타일링은 <code>span</code>태그로 감싸야 적용됩니다(이 경고는 개발 모드에서만 표시됩니다).
         </Callout>
         :
