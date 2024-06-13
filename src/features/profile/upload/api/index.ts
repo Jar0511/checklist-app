@@ -20,7 +20,7 @@ export const getFolderList = async (
     throw new Error(`폴더 조회 중 오류: ${error}`)
   }
 
-  return data ?? [];
+  return data;
 }
 
 /** 파일 목록 조회 */
