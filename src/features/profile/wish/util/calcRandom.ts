@@ -32,8 +32,8 @@ export const getRandomByProbabilty = <T>(values: {value: T, probability: number}
   return values[values.length - 1].value;
 }
 
-/** 주어진 배열 중 아무거나 고를 때 */
-export const sample = <T>(values: T[]): T => {
-  const random = Math.floor(Math.random() * values.length);
-  return values[random];
+/** 배열 길이가 주어졌을 때, 무작위로 인덱스 선택 */
+export const sampleIndex = (length: number) => {
+  if(length <= 0) throw new Error("1 이상의 숫자를 넣어야 합니다");
+  return Math.floor(Math.random() * length);
 }
