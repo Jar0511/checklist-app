@@ -84,7 +84,7 @@
   }
 
   code {
-    @apply bg-slate-50 p-[0.25em] rounded-md text-blue-600 dark:bg-slate-800 dark:text-blue-50 text-[0.875em]
+    @apply bg-slate-50 p-[0.25em] rounded-sm text-blue-600 dark:bg-slate-800 dark:text-blue-50 text-[0.875em]
   }
 }
 
