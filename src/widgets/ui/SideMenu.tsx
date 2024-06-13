@@ -18,14 +18,19 @@ export const DashboardSideMenu = () => {
   const targetName = search.get(TARGET_KEY);
 
   useEffect(() => {
-    fetcher()
+    fetcher();
+
+    window.addEventListener('focus', fetcher);
+    return () => {
+      window.removeEventListener('focus', fetcher);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   } , []);
 
   return (
-    <aside className="w-full overflow-auto border border-solid border-neutral-200 dark:border-neutral-400 sm:w-[320px] p-6 bg-neutral-50 dark:bg-neutral-700 flex flex-col gap-2 items-start">
+    <aside className="w-full overflow-auto border-solid sm:w-[320px] flex flex-col gap-2 items-start">
       <FilledButton
-        title={targetName ? "back" : "home"}
+        aria-label={targetName ? "back" : "home"}
         className="px-0"
         onClick={() => targetName ? setSearch({...Object.fromEntries(search), [TARGET_KEY]: ""}) : navigate("/room/list")}
       >
@@ -53,9 +58,14 @@ export const DashboardSideMenu = () => {
                 <p key={title} onClick={() => setSearch({...Object.fromEntries(search), [TARGET_KEY]: title, [SEARCH_KEY]: title})}>{title}</p>
               )
             }
-            <button type="button" onClick={fetcher} disabled={!more}>
-              클릭 테스트!
-            </button>
+            {more &&
+              <FilledButton
+                onClick={fetcher}
+                size="sm"
+              >
+                더 불러오기
+              </FilledButton>
+            }
           </>
         }
       </div>
