@@ -11,6 +11,7 @@ import { useAtomValue, useSetAtom } from "jotai"
 import { roomInfoAtom } from "@/entities/room"
 
 export const AddNewNoticeButton = ({onSuccess}: {onSuccess: () => void}) => {
+  const modalID = "add_new_notice";
   const {
     register,
     handleSubmit,
@@ -25,7 +26,7 @@ export const AddNewNoticeButton = ({onSuccess}: {onSuccess: () => void}) => {
   return (
     <>
       <Modal
-        modal_id="add_new_notice"
+        modal_id={modalID}
         outsideClose
         actionButtons={
           <FilledButton
@@ -61,8 +62,7 @@ export const AddNewNoticeButton = ({onSuccess}: {onSuccess: () => void}) => {
       </Modal>
       <div className="flex justify-end">
         <OutlinedButton
-          modal
-          onClick={() => setShow("add_new_notice")}
+          modal={modalID}
           size="sm"
         >
           <MdAdd />

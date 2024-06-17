@@ -1,6 +1,7 @@
 import { type ButtonHTMLAttributes, Children, forwardRef } from "react";
-import type { CommonButtonType, FABType } from "../model";
+import { modalShowAtom, type CommonButtonType, type FABType } from "../model";
 import { consoleWarn } from "../lib";
+import { useSetAtom } from "jotai";
 
 /** 배경 색이 들어가는 버튼을 위한 배경 색 클래스 생성 함수 */
 const makeFilledClass = ({className, btncolor, dim}: {className?: string} & CommonButtonType) => {
@@ -52,6 +53,7 @@ ButtonHTMLAttributes<HTMLButtonElement> & Pick<CommonButtonType, "modal">
   className,
   ...rest
 }, ref) => {
+  const setShow = useSetAtom(modalShowAtom);
   return (
     <button
       {...rest}
@@ -67,6 +69,10 @@ ButtonHTMLAttributes<HTMLButtonElement> & Pick<CommonButtonType, "modal">
         } ${
           className ?? ''
         }`}
+      onClick={(e) => {
+        if(modal) setShow(modal);
+        if(rest.onClick) rest.onClick(e);
+      }}
     >
       {children}
     </button>

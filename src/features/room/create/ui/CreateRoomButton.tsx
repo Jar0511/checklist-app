@@ -10,6 +10,7 @@ import { useState } from "react";
 import { PiPlusCircleBold } from "react-icons/pi";
 
 export const CreateRoomButton = () => {
+  const modalID = "create_new_room";
   const user = useAtomValue(userAtom);
   const setShow = useSetAtom(modalShowAtom);
   const revalidator = useRevalidator();
@@ -24,7 +25,7 @@ export const CreateRoomButton = () => {
   return (
     <>
       <Modal
-        modal_id="create_new_room"
+        modal_id={modalID}
         outsideClose
         actionButtons={
           <FilledButton
@@ -69,8 +70,7 @@ export const CreateRoomButton = () => {
       </Modal>
       <FilledButton
         btncolor="primary"
-        modal
-        onClick={() => setShow("create_new_room")}
+        modal={modalID}
         title="방 생성"
       >
         <PiPlusCircleBold />

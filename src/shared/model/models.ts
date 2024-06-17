@@ -5,8 +5,8 @@ export type CommonButtonType = {
   btncolor?: "primary" | "secondary" | "tertiary";
   /** 버튼 색상 채도 */
   dim?: boolean;
-  /** 모달을 여는 버튼인지 여부 */
-  modal?: boolean;
+  /** target modal id */
+  modal?: string;
   /** 버튼 사이즈(기본 값: md) */
   size?: "sm" | "md" | "lg";
 }
