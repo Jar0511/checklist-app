@@ -16,9 +16,11 @@ export const InviteButton = ({
         <h3>초대 코드 생성</h3>
         <TabPanel
           tabs={[
-            {children: "사용 횟수 제한"},
-            {children: "등록 시각 제한"}
+            { children: "사용 횟수 제한", value: "count" },
+            { children: "등록 시각 제한", value: "time" }
           ]}
+          selectValue={type}
+          setSelectValue={setType}
         />
       </Modal>
       <BasicButton

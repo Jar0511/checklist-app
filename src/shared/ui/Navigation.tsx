@@ -8,7 +8,7 @@ export function TabPanel<T>({
   setSelectValue,
   disabled
 }: {
-  tabs: Partial<(ButtonHTMLAttributes<HTMLButtonElement> & CommonButtonType)> & {value: T}[],
+  tabs: (Partial<(ButtonHTMLAttributes<HTMLButtonElement> & CommonButtonType)> & {value: T})[],
   selectValue: T,
   setSelectValue: (arg: T) => void,
   disabled?: boolean
