@@ -5,6 +5,7 @@ import { type ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { ThemeToggleButton } from "@/features/setting/theme";
 import { LogoutButton } from "@/features/auth";
+import { AnimatePresence } from "framer-motion";
 
 export const Header = ({logo, className, children}: {logo?: boolean; className?: string; children?: ReactNode;}) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -25,7 +26,9 @@ export const Header = ({logo, className, children}: {logo?: boolean; className?:
           >
             <ProfileIcon url={userInfo?.user_profile} bg={userInfo?.profile_bg} />
           </BasicButton>
-          {openMenu && <UserMenu />}
+          <AnimatePresence>
+            {openMenu && <UserMenu />}
+          </AnimatePresence>
         </div>
         {children}
         {logo && <h1>logo</h1>}

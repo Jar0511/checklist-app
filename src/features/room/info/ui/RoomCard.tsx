@@ -3,6 +3,7 @@ import { getRoomMembers } from "@/features/room/info";
 import { useDismissClick, useFetch } from "@/shared/lib";
 import type { Tables } from "@/shared/model/supabase";
 import { BasicButton, DropDownWrapper, SkeletonWrapper } from "@/shared/ui";
+import { AnimatePresence } from "framer-motion";
 import { useAtomValue } from "jotai";
 import { type HTMLAttributes, Suspense, useState } from "react";
 import { FaHouseUser, FaUserGroup } from "react-icons/fa6";
@@ -80,16 +81,18 @@ export const RoomCard = ({
           >
             <HiOutlineDotsHorizontal />
           </BasicButton>
-          {openMenu &&
-            <DropDownWrapper
-              width={"100px"}
-              top={"90%"}
-              right={0}
-              className={`*:px-2 card_menu_container`}
-            >
-              <p>메뉴</p>
-            </DropDownWrapper>
-          }
+          <AnimatePresence>
+            {openMenu &&
+              <DropDownWrapper
+                width={"100px"}
+                top={"90%"}
+                right={0}
+                className={`*:px-2 card_menu_container`}
+              >
+                <p>메뉴</p>
+              </DropDownWrapper>
+            }
+          </AnimatePresence>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { postNewChecklist, postToggleChecklist } from "../api";
 import { MdAdd, MdCheck } from "react-icons/md";
 import type { Tables } from "@/shared/model/supabase";
 import { Await, useLoaderData, useRevalidator } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 const SelectItem = ({
   children,
@@ -174,44 +175,46 @@ const AddCheckListForm = ({room_id, checklist}: {room_id: number, checklist: Tab
         onChange={(e) => deboundedOnChange(e)}
         ref={inputRef}
       />
-      {focus &&
-        <DropDownWrapper width={"100%"} top={"100%"} left={0} fade className="text-[0.9375rem]">
-          <ul className="flex flex-col">
-            {filteredChecklist.map((item, idx) =>
-              <SelectItem
-                key={typeof item == "string" ? item : item.id}
-                focus={selectIndex == idx}
-                setFocus={() => setSelectIndex(idx)}
-                onClick={() =>
-                  typeof item == "string" ?
-                  (
-                    item == "duplicate" ?
-                    null : submit({ title: inputText, room_id }, "new")
-                  )
-                  :
-                  submit(item, "select")
-                }
-                disabled={item === "duplicate"}
-              >
-                {
-                  typeof item == "string" ?
-                  (item == "new" ?
-                    <p className="flex items-center gap-2">
-                      <MdAdd /><code>{inputText}</code> 추가하기
-                    </p>
+      <AnimatePresence>
+        {focus &&
+          <DropDownWrapper width={"100%"} top={"100%"} left={0} fade className="text-[0.9375rem]">
+            <ul className="flex flex-col">
+              {filteredChecklist.map((item, idx) =>
+                <SelectItem
+                  key={typeof item == "string" ? item : item.id}
+                  focus={selectIndex == idx}
+                  setFocus={() => setSelectIndex(idx)}
+                  onClick={() =>
+                    typeof item == "string" ?
+                    (
+                      item == "duplicate" ?
+                      null : submit({ title: inputText, room_id }, "new")
+                    )
                     :
-                    "이미 존재하는 항목입니다"
-                  ) :
-                  (item.title ?? "")
-                }
-              </SelectItem>
-            )}
-            {(filteredChecklist.length == 1 && !filteredChecklist[0] && !inputText) &&
-              <li><div className="typing-loader" /></li>
-            }
-          </ul>
-        </DropDownWrapper>
-      }
+                    submit(item, "select")
+                  }
+                  disabled={item === "duplicate"}
+                >
+                  {
+                    typeof item == "string" ?
+                    (item == "new" ?
+                      <p className="flex items-center gap-2">
+                        <MdAdd /><code>{inputText}</code> 추가하기
+                      </p>
+                      :
+                      "이미 존재하는 항목입니다"
+                    ) :
+                    (item.title ?? "")
+                  }
+                </SelectItem>
+              )}
+              {(filteredChecklist.length == 1 && !filteredChecklist[0] && !inputText) &&
+                <li><div className="typing-loader" /></li>
+              }
+            </ul>
+          </DropDownWrapper>
+        }
+      </AnimatePresence>
     </div>
   )
 }
