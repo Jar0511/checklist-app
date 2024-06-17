@@ -20,9 +20,9 @@ export const DashboardSideMenu = () => {
   useEffect(() => {
     fetcher();
 
-    window.addEventListener('focus', fetcher);
+    window.addEventListener('focus', () => fetcher());
     return () => {
-      window.removeEventListener('focus', fetcher);
+      window.removeEventListener('focus', () => fetcher());
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   } , []);
@@ -60,7 +60,7 @@ export const DashboardSideMenu = () => {
             }
             {more &&
               <FilledButton
-                onClick={fetcher}
+                onClick={() => fetcher()}
                 size="sm"
               >
                 더 불러오기
