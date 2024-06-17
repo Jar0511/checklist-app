@@ -8,6 +8,7 @@ export const getRoomInfo = async (_id: number) => {
       _id,
       room_nm,
       room_desc,
+      room_owner_id,
       banner:profile_banner(
         _id,
         banner_nm,

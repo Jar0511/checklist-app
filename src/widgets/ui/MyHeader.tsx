@@ -5,6 +5,9 @@ import { type ReactNode, useState } from "react";
 import { useDismissClick } from "@/shared/lib";
 import { ThemeToggleButton } from "@/features/setting/theme";
 import { LogoutButton } from "@/features/auth";
+import { roomInfoAtom } from "@/entities/room";
+import { userAtom } from "@/entities/auth";
+import { InviteButton } from "@/features/room/invite";
 import { AnimatePresence } from "framer-motion";
 
 export const Header = ({logo, className, children}: {logo?: boolean; className?: string; children?: ReactNode;}) => {
@@ -38,8 +41,11 @@ export const Header = ({logo, className, children}: {logo?: boolean; className?:
 }
 
 const UserMenu = () => {
+  const userSession = useAtomValue(userAtom);
   const userInfo = useAtomValue(userInfoAtom);
+  const currentRoomInfo = useAtomValue(roomInfoAtom);
   const listButtonClass = "justify-between w-full font-normal";
+
   return (
     <DropDownWrapper right={0}>
       <h2 className="font-bold cursor-default text-[1.0625rem] border-b border-solid border-neutral-200 dark:border-neutral-400 pb-[10px]">{userInfo?.user_nm}</h2>
@@ -47,6 +53,9 @@ const UserMenu = () => {
         <li>내 정보</li>
         <li><ThemeToggleButton fab={false} className={listButtonClass}/></li>
         <li><LogoutButton className={listButtonClass}/></li>
+        {(currentRoomInfo?.room_owner_id == userSession?.user.id) &&
+          <li><InviteButton className={listButtonClass} /></li>
+        }
       </ul>
     </DropDownWrapper>
   )
