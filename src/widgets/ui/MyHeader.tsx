@@ -11,11 +11,11 @@ export const Header = ({logo, className, children}: {logo?: boolean; className?:
   const [openMenu, setOpenMenu] = useState(false);
   const userInfo = useAtomValue(userInfoAtom);
 
-  useDismissClick('#user_menu_aria', () => setOpenMenu(false));
+  useDismissClick('.user_menu_aria', () => setOpenMenu(false));
   return (
     <header className={`${className ?? ''} w-full sticky top-0 flex justify-center z-[9]`}>
       <div className="container flex flex-row-reverse justify-between items-center py-[12px]">
-        <div id="user_menu_aria" className="relative">
+        <div className="relative user_menu_aria">
           <BasicButton
             aria-label="open user menu"
             title="사용자 메뉴 열기"
