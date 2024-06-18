@@ -14,12 +14,14 @@ export function TabPanel<T>({
   disabled?: boolean
 }){
   return (
-    <ul className="flex w-full border rounded-full border-neutral-500 dark:border-neutral-300">
+    <ul className="flex w-full border rounded-full border-neutral-500 dark:border-neutral-300 overflow-clip">
       {tabs.map(({value, ...prop}, index) =>
         <li key={`tab_${index}`} className="flex-1 even:border-l border-neutral-500 dark:border-neutral-300">
           <BasicButton
             {...prop}
             onClick={() => setSelectValue(value)}
+            className={`${selectValue == value ? " bg-grapefruit-400/25": ""} w-full py-1`}
+            disabled={disabled}
           />
         </li>
       )}
