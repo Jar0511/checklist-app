@@ -31,6 +31,11 @@ export const RoomWrapper = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room_id]);
 
+  useEffect(() => {
+    return () => setRoomInfo(null);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div className="w-full h-full overflow-auto">
       <Header logo className="">
