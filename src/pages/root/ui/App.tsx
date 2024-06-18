@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { supabase } from '@/shared/api'
 import { Outlet, useLocation, useNavigate, useRevalidator } from 'react-router-dom'
 import { useAtom } from 'jotai';
@@ -12,6 +12,7 @@ export function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const revalidate = useRevalidator();
+  const redirectTimeout = useRef<NodeJS.Timeout | null>(null);
 
   // 세션 구독
   useEffect(() => {
@@ -40,11 +41,17 @@ export function App() {
   // 세션 여부에 따른 리다이렉트 처리
   useEffect(() => {
     if(detectSession) {
+      if(redirectTimeout.current) clearTimeout(redirectTimeout.current);
+
       const _local = JSON.parse(localStorage.getItem(SESSION_KEY) ?? 'null');
       if(pathname.includes("auth") && !!session) {
         return navigate("/room/list");
       }else if(!pathname.includes("auth") && (!session && !_local)) {
         return navigate("/auth/login");
+      }
+
+      if(!!session && pathname === "/") {
+        redirectTimeout.current = setTimeout(() => navigate("/room/list"), 500);
       }
 
       setDetectSession(false);
