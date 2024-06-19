@@ -1,5 +1,8 @@
-export { type LoginType, type RegisterType } from './model/models';
+export {
+	type LoginType,
+	type RegisterType,
+} from "./model/models";
 
 export { LoginForm } from "./ui/LoginForm";
-export { RegisterForm } from './ui/RegisterForm';
+export { RegisterForm } from "./ui/RegisterForm";
 export { LogoutButton } from "./ui/LogoutButton";

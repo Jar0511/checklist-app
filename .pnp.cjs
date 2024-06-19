@@ -39,6 +39,7 @@ const RAW_RUNTIME_STATE =
           ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
           ["jotai", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:2.7.2"],\
           ["postcss", "npm:8.4.38"],\
+          ["prettier", "npm:3.3.2"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
           ["react-hook-form", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:7.51.2"],\
@@ -1772,6 +1773,7 @@ const RAW_RUNTIME_STATE =
           ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
           ["jotai", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:2.7.2"],\
           ["postcss", "npm:8.4.38"],\
+          ["prettier", "npm:3.3.2"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:18.2.0"],\
           ["react-hook-form", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:7.51.2"],\
@@ -3603,6 +3605,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/prelude-ls-npm-1.2.1-3e4d272a55-b00d617431.zip/node_modules/prelude-ls/",\
         "packageDependencies": [\
           ["prelude-ls", "npm:1.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["prettier", [\
+      ["npm:3.3.2", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.3.2-efeafcaa4b/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:3.3.2"]\
         ],\
         "linkType": "HARD"\
       }]\

@@ -1,1 +1,5 @@
-export type FolderType = {folder: string[], page: number, more: boolean};
+export type FolderType = {
+	folder: string[];
+	page: number;
+	more: boolean;
+};

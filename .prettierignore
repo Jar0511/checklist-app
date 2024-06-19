@@ -1,0 +1,12 @@
+# Ignore artifacts:
+dist
+.vite
+.vscode
+.yarn
+public
+
+*.yml
+*.md
+*.html
+*.cjs
+*.js

@@ -1,2 +1,2 @@
-export * from './model/action';
-export * from './model/store';
+export * from "./model/action";
+export * from "./model/store";

@@ -15,12 +15,22 @@ export const useDismissClick = (
 
 	useEffect(() => {
 		const checkTarget = (e: MouseEvent) => {
-			if(e.target instanceof Element) {
-				if(Array.isArray(containerClass)) {
-					if(containerClass.every((nm) => !containsByClassName((e.target as Element), nm))) {
+			if (e.target instanceof Element) {
+				if (Array.isArray(containerClass)) {
+					if (
+						containerClass.every(
+							(nm) =>
+								!containsByClassName(
+									e.target as Element,
+									nm
+								)
+						)
+					) {
 						savedCallback.current();
 					}
-				} else if(!containsByClassName(e.target, containerClass)) {
+				} else if (
+					!containsByClassName(e.target, containerClass)
+				) {
 					savedCallback.current();
 				}
 			}
@@ -30,6 +40,6 @@ export const useDismissClick = (
 
 		return () => {
 			document.removeEventListener("click", checkTarget);
-		}
+		};
 	}, [containerClass]);
-}
+};
