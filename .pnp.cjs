@@ -34,6 +34,8 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.2.1"],\
           ["autoprefixer", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:10.4.19"],\
           ["eslint", "npm:8.57.0"],\
+          ["eslint-config-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:9.1.0"],\
+          ["eslint-plugin-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:5.1.3"],\
           ["eslint-plugin-react-hooks", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:0.4.6"],\
           ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
@@ -830,6 +832,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@pkgjs-parseargs-npm-0.11.0-cd2a3fe948-5bd7576bb1.zip/node_modules/@pkgjs/parseargs/",\
         "packageDependencies": [\
           ["@pkgjs/parseargs", "npm:0.11.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@pkgr/core", [\
+      ["npm:0.1.1", {\
+        "packageLocation": "./.yarn/cache/@pkgr-core-npm-0.1.1-844d1f59d1-3f7536bc7f.zip/node_modules/@pkgr/core/",\
+        "packageDependencies": [\
+          ["@pkgr/core", "npm:0.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1768,6 +1779,8 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.2.1"],\
           ["autoprefixer", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:10.4.19"],\
           ["eslint", "npm:8.57.0"],\
+          ["eslint-config-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:9.1.0"],\
+          ["eslint-plugin-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:5.1.3"],\
           ["eslint-plugin-react-hooks", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:0.4.6"],\
           ["framer-motion", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:11.0.24"],\
@@ -2149,6 +2162,60 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["eslint-config-prettier", [\
+      ["npm:9.1.0", {\
+        "packageLocation": "./.yarn/cache/eslint-config-prettier-npm-9.1.0-0e1fd42d7d-6d332694b3.zip/node_modules/eslint-config-prettier/",\
+        "packageDependencies": [\
+          ["eslint-config-prettier", "npm:9.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:9.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-config-prettier-virtual-c7ec297e93/0/cache/eslint-config-prettier-npm-9.1.0-0e1fd42d7d-6d332694b3.zip/node_modules/eslint-config-prettier/",\
+        "packageDependencies": [\
+          ["eslint-config-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:9.1.0"],\
+          ["@types/eslint", null],\
+          ["eslint", "npm:8.57.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/eslint",\
+          "eslint"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["eslint-plugin-prettier", [\
+      ["npm:5.1.3", {\
+        "packageLocation": "./.yarn/cache/eslint-plugin-prettier-npm-5.1.3-496c3b84df-f45d5fc1fc.zip/node_modules/eslint-plugin-prettier/",\
+        "packageDependencies": [\
+          ["eslint-plugin-prettier", "npm:5.1.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:5.1.3", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-plugin-prettier-virtual-fae1d154d6/0/cache/eslint-plugin-prettier-npm-5.1.3-496c3b84df-f45d5fc1fc.zip/node_modules/eslint-plugin-prettier/",\
+        "packageDependencies": [\
+          ["eslint-plugin-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:5.1.3"],\
+          ["@types/eslint", null],\
+          ["@types/eslint-config-prettier", null],\
+          ["@types/prettier", null],\
+          ["eslint", "npm:8.57.0"],\
+          ["eslint-config-prettier", "virtual:84884e9117e7f111d86a38ec3e25bdd8ca6c50681eaa0ee2299374bdf48cd9da4f98a39b6110ad84306029afc73c054df5041c5024c70064716aa9980509c816#npm:9.1.0"],\
+          ["prettier", "npm:3.3.2"],\
+          ["prettier-linter-helpers", "npm:1.0.0"],\
+          ["synckit", "npm:0.8.8"]\
+        ],\
+        "packagePeers": [\
+          "@types/eslint-config-prettier",\
+          "@types/eslint",\
+          "@types/prettier",\
+          "eslint-config-prettier",\
+          "eslint",\
+          "prettier"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["eslint-plugin-react-hooks", [\
       ["npm:4.6.0", {\
         "packageLocation": "./.yarn/cache/eslint-plugin-react-hooks-npm-4.6.0-b429fac07f-58c7e10ea5.zip/node_modules/eslint-plugin-react-hooks/",\
@@ -2277,6 +2344,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/fast-deep-equal-npm-3.1.3-790edcfcf5-40dedc862e.zip/node_modules/fast-deep-equal/",\
         "packageDependencies": [\
           ["fast-deep-equal", "npm:3.1.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["fast-diff", [\
+      ["npm:1.3.0", {\
+        "packageLocation": "./.yarn/cache/fast-diff-npm-1.3.0-9f19e3b743-5c19af237e.zip/node_modules/fast-diff/",\
+        "packageDependencies": [\
+          ["fast-diff", "npm:1.3.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3618,6 +3694,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["prettier-linter-helpers", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "./.yarn/cache/prettier-linter-helpers-npm-1.0.0-6925131a7e-81e0027d73.zip/node_modules/prettier-linter-helpers/",\
+        "packageDependencies": [\
+          ["prettier-linter-helpers", "npm:1.0.0"],\
+          ["fast-diff", "npm:1.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["proc-log", [\
       ["npm:3.0.0", {\
         "packageLocation": "./.yarn/cache/proc-log-npm-3.0.0-a8c21c2f0f-f66430e4ff.zip/node_modules/proc-log/",\
@@ -4124,6 +4210,17 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["synckit", [\
+      ["npm:0.8.8", {\
+        "packageLocation": "./.yarn/cache/synckit-npm-0.8.8-f5ee4a6dac-c3d3aa8e28.zip/node_modules/synckit/",\
+        "packageDependencies": [\
+          ["synckit", "npm:0.8.8"],\
+          ["@pkgr/core", "npm:0.1.1"],\
+          ["tslib", "npm:2.6.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["tailwindcss", [\
       ["npm:3.4.3", {\
         "packageLocation": "./.yarn/cache/tailwindcss-npm-3.4.3-deb88ca0a1-11e5546494.zip/node_modules/tailwindcss/",\
@@ -4298,6 +4395,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/tslib-npm-2.6.2-4fc8c068d9-e03a8a4271.zip/node_modules/tslib/",\
         "packageDependencies": [\
           ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:2.6.3", {\
+        "packageLocation": "./.yarn/cache/tslib-npm-2.6.3-0fd136b3be-2598aef53d.zip/node_modules/tslib/",\
+        "packageDependencies": [\
+          ["tslib", "npm:2.6.3"]\
         ],\
         "linkType": "HARD"\
       }]\

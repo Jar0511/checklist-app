@@ -1,6 +1,6 @@
 export {
-	type LoginType,
-	type RegisterType,
+  type LoginType,
+  type RegisterType,
 } from "./model/models";
 
 export { LoginForm } from "./ui/LoginForm";

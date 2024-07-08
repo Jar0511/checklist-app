@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-	/*
+  /*
   Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
   https://github.com/orioncactus/pretendard
 
@@ -12,223 +12,223 @@
   http://scripts.sil.org/OFL
   */
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 900;
-		font-display: swap;
-		src:
-			local("Pretendard Black"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-Black.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-Black.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 900;
+    font-display: swap;
+    src:
+      local("Pretendard Black"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-Black.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-Black.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 800;
-		font-display: swap;
-		src:
-			local("Pretendard ExtraBold"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-ExtraBold.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-ExtraBold.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 800;
+    font-display: swap;
+    src:
+      local("Pretendard ExtraBold"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-ExtraBold.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-ExtraBold.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 700;
-		font-display: swap;
-		src:
-			local("Pretendard Bold"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-Bold.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-Bold.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 700;
+    font-display: swap;
+    src:
+      local("Pretendard Bold"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-Bold.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-Bold.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 600;
-		font-display: swap;
-		src:
-			local("Pretendard SemiBold"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-SemiBold.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-SemiBold.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 600;
+    font-display: swap;
+    src:
+      local("Pretendard SemiBold"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-SemiBold.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-SemiBold.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 500;
-		font-display: swap;
-		src:
-			local("Pretendard Medium"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-Medium.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-Medium.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 500;
+    font-display: swap;
+    src:
+      local("Pretendard Medium"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-Medium.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-Medium.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 400;
-		font-display: swap;
-		src:
-			local("Pretendard Regular"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-Regular.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-Regular.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 400;
+    font-display: swap;
+    src:
+      local("Pretendard Regular"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-Regular.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-Regular.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 300;
-		font-display: swap;
-		src:
-			local("Pretendard Light"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-Light.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-Light.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 300;
+    font-display: swap;
+    src:
+      local("Pretendard Light"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-Light.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-Light.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 200;
-		font-display: swap;
-		src:
-			local("Pretendard ExtraLight"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-ExtraLight.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-ExtraLight.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 200;
+    font-display: swap;
+    src:
+      local("Pretendard ExtraLight"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-ExtraLight.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-ExtraLight.subset.woff")
+        format("woff");
+  }
 
-	@font-face {
-		font-family: "Pretendard";
-		font-weight: 100;
-		font-display: swap;
-		src:
-			local("Pretendard Thin"),
-			url("/fonts/pretendard/woff2-subset/Pretendard-Thin.subset.woff2")
-				format("woff2"),
-			url("/fonts/pretendard/woff-subset/Pretendard-Thin.subset.woff")
-				format("woff");
-	}
+  @font-face {
+    font-family: "Pretendard";
+    font-weight: 100;
+    font-display: swap;
+    src:
+      local("Pretendard Thin"),
+      url("/fonts/pretendard/woff2-subset/Pretendard-Thin.subset.woff2")
+        format("woff2"),
+      url("/fonts/pretendard/woff-subset/Pretendard-Thin.subset.woff")
+        format("woff");
+  }
 
-	:root {
-		--basic-text: 0 0 0;
-	}
+  :root {
+    --basic-text: 0 0 0;
+  }
 
-	.dark {
-		--basic-text: 255 255 255;
-	}
+  .dark {
+    --basic-text: 255 255 255;
+  }
 
-	code {
-		@apply bg-slate-50 p-[0.25em] rounded-sm text-blue-600 dark:bg-slate-800 dark:text-blue-50 text-[0.875em];
-	}
+  code {
+    @apply bg-slate-50 p-[0.25em] rounded-sm text-blue-600 dark:bg-slate-800 dark:text-blue-50 text-[0.875em];
+  }
 }
 
 @layer components {
-	/* 로딩 스피너: <div class="loader"></div> */
-	.loader {
-		--_c: no-repeat
-			radial-gradient(farthest-side, #d7473c 92%, #0000);
-		background:
-			var(--_c) top,
-			var(--_c) left,
-			var(--_c) right,
-			var(--_c) bottom;
-	}
+  /* 로딩 스피너: <div class="loader"></div> */
+  .loader {
+    --_c: no-repeat
+      radial-gradient(farthest-side, #d7473c 92%, #0000);
+    background:
+      var(--_c) top,
+      var(--_c) left,
+      var(--_c) right,
+      var(--_c) bottom;
+  }
 
-	/*
+  /*
     css loader 애니메이션(미세 조정)
     출처: https://css-loaders.com/
   */
 
-	/* HTML: <div class="loader"></div> */
-	.typing-loader {
-		height: 20px;
-		aspect-ratio: 2.5;
-		--_g: no-repeat
-			radial-gradient(
-				farthest-side,
-				rgb(var(--basic-text) / 0.35) 90%,
-				#0000
-			);
-		background: var(--_g), var(--_g), var(--_g), var(--_g);
-		background-size: 20% 50%;
-		animation: l44 1s infinite linear alternate;
-	}
-	@keyframes l44 {
-		0%,
-		5% {
-			background-position:
-				calc(0 * 100% / 3) 50%,
-				calc(1 * 100% / 3) 50%,
-				calc(2 * 100% / 3) 50%,
-				calc(3 * 100% / 3) 50%;
-		}
-		12.5% {
-			background-position:
-				calc(0 * 100% / 3) 0,
-				calc(1 * 100% / 3) 50%,
-				calc(2 * 100% / 3) 50%,
-				calc(3 * 100% / 3) 50%;
-		}
-		25% {
-			background-position:
-				calc(0 * 100% / 3) 0,
-				calc(1 * 100% / 3) 0,
-				calc(2 * 100% / 3) 50%,
-				calc(3 * 100% / 3) 50%;
-		}
-		37.5% {
-			background-position:
-				calc(0 * 100% / 3) 100%,
-				calc(1 * 100% / 3) 0,
-				calc(2 * 100% / 3) 0,
-				calc(3 * 100% / 3) 50%;
-		}
-		50% {
-			background-position:
-				calc(0 * 100% / 3) 100%,
-				calc(1 * 100% / 3) 100%,
-				calc(2 * 100% / 3) 0,
-				calc(3 * 100% / 3) 0;
-		}
-		62.5% {
-			background-position:
-				calc(0 * 100% / 3) 50%,
-				calc(1 * 100% / 3) 100%,
-				calc(2 * 100% / 3) 100%,
-				calc(3 * 100% / 3) 0;
-		}
-		75% {
-			background-position:
-				calc(0 * 100% / 3) 50%,
-				calc(1 * 100% / 3) 50%,
-				calc(2 * 100% / 3) 100%,
-				calc(3 * 100% / 3) 100%;
-		}
-		87.5% {
-			background-position:
-				calc(0 * 100% / 3) 50%,
-				calc(1 * 100% / 3) 50%,
-				calc(2 * 100% / 3) 50%,
-				calc(3 * 100% / 3) 100%;
-		}
-		95%,
-		100% {
-			background-position:
-				calc(0 * 100% / 3) 50%,
-				calc(1 * 100% / 3) 50%,
-				calc(2 * 100% / 3) 50%,
-				calc(3 * 100% / 3) 50%;
-		}
-	}
+  /* HTML: <div class="loader"></div> */
+  .typing-loader {
+    height: 20px;
+    aspect-ratio: 2.5;
+    --_g: no-repeat
+      radial-gradient(
+        farthest-side,
+        rgb(var(--basic-text) / 0.35) 90%,
+        #0000
+      );
+    background: var(--_g), var(--_g), var(--_g), var(--_g);
+    background-size: 20% 50%;
+    animation: l44 1s infinite linear alternate;
+  }
+  @keyframes l44 {
+    0%,
+    5% {
+      background-position:
+        calc(0 * 100% / 3) 50%,
+        calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%,
+        calc(3 * 100% / 3) 50%;
+    }
+    12.5% {
+      background-position:
+        calc(0 * 100% / 3) 0,
+        calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%,
+        calc(3 * 100% / 3) 50%;
+    }
+    25% {
+      background-position:
+        calc(0 * 100% / 3) 0,
+        calc(1 * 100% / 3) 0,
+        calc(2 * 100% / 3) 50%,
+        calc(3 * 100% / 3) 50%;
+    }
+    37.5% {
+      background-position:
+        calc(0 * 100% / 3) 100%,
+        calc(1 * 100% / 3) 0,
+        calc(2 * 100% / 3) 0,
+        calc(3 * 100% / 3) 50%;
+    }
+    50% {
+      background-position:
+        calc(0 * 100% / 3) 100%,
+        calc(1 * 100% / 3) 100%,
+        calc(2 * 100% / 3) 0,
+        calc(3 * 100% / 3) 0;
+    }
+    62.5% {
+      background-position:
+        calc(0 * 100% / 3) 50%,
+        calc(1 * 100% / 3) 100%,
+        calc(2 * 100% / 3) 100%,
+        calc(3 * 100% / 3) 0;
+    }
+    75% {
+      background-position:
+        calc(0 * 100% / 3) 50%,
+        calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 100%,
+        calc(3 * 100% / 3) 100%;
+    }
+    87.5% {
+      background-position:
+        calc(0 * 100% / 3) 50%,
+        calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%,
+        calc(3 * 100% / 3) 100%;
+    }
+    95%,
+    100% {
+      background-position:
+        calc(0 * 100% / 3) 50%,
+        calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%,
+        calc(3 * 100% / 3) 50%;
+    }
+  }
 }

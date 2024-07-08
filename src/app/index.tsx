@@ -4,98 +4,98 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "@/pages/root";
 import {
-	Outlet,
-	RouterProvider,
-	createBrowserRouter,
-	defer,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  defer,
 } from "react-router-dom";
 import "./index.css";
 import {
-	LoadingFallback,
-	RouteErrorFallBack,
+  LoadingFallback,
+  RouteErrorFallBack,
 } from "@/shared/ui";
 import { AuthPage } from "@/pages/auth";
 import {
-	getAllChecklist,
-	loadRoomList,
+  getAllChecklist,
+  loadRoomList,
 } from "@/pages/room";
 const RoomListPage = lazy(() =>
-	import("@/pages/room").then(({ RoomListPage }) => ({
-		default: RoomListPage,
-	}))
+  import("@/pages/room").then(({ RoomListPage }) => ({
+    default: RoomListPage,
+  }))
 );
 const RoomWrapper = lazy(() =>
-	import("@/pages/room").then(({ RoomWrapper }) => ({
-		default: RoomWrapper,
-	}))
+  import("@/pages/room").then(({ RoomWrapper }) => ({
+    default: RoomWrapper,
+  }))
 );
 const BannerDashBoardPage = lazy(() =>
-	import("@/pages/banner").then(
-		({ BannerDashBoardPage }) => ({
-			default: BannerDashBoardPage,
-		})
-	)
+  import("@/pages/banner").then(
+    ({ BannerDashBoardPage }) => ({
+      default: BannerDashBoardPage,
+    })
+  )
 );
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-		errorElement: <RouteErrorFallBack root />,
-		children: [
-			{
-				path: "auth/:action",
-				element: <AuthPage />,
-			},
-			{
-				path: "room",
-				element: <Outlet />,
-				children: [
-					{
-						path: "list",
-						element: (
-							<Suspense
-								fallback={<LoadingFallback screen />}
-							>
-								<RoomListPage />
-							</Suspense>
-						),
-						loader: loadRoomList,
-					},
-					{
-						path: ":room_id",
-						element: (
-							<Suspense
-								fallback={<LoadingFallback screen />}
-							>
-								<RoomWrapper />
-							</Suspense>
-						),
-						loader: ({ params }) =>
-							defer({
-								checklist: getAllChecklist(
-									Number(params.room_id)
-								),
-							}),
-					},
-				],
-			},
-			{
-				path: "dashboard",
-				element: (
-					<Suspense fallback={<LoadingFallback screen />}>
-						<BannerDashBoardPage />
-					</Suspense>
-				),
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <RouteErrorFallBack root />,
+    children: [
+      {
+        path: "auth/:action",
+        element: <AuthPage />,
+      },
+      {
+        path: "room",
+        element: <Outlet />,
+        children: [
+          {
+            path: "list",
+            element: (
+              <Suspense
+                fallback={<LoadingFallback screen />}
+              >
+                <RoomListPage />
+              </Suspense>
+            ),
+            loader: loadRoomList,
+          },
+          {
+            path: ":room_id",
+            element: (
+              <Suspense
+                fallback={<LoadingFallback screen />}
+              >
+                <RoomWrapper />
+              </Suspense>
+            ),
+            loader: ({ params }) =>
+              defer({
+                checklist: getAllChecklist(
+                  Number(params.room_id)
+                ),
+              }),
+          },
+        ],
+      },
+      {
+        path: "dashboard",
+        element: (
+          <Suspense fallback={<LoadingFallback screen />}>
+            <BannerDashBoardPage />
+          </Suspense>
+        ),
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(
-	document.getElementById("root")!
+  document.getElementById("root")!
 ).render(
-	<React.StrictMode>
-		<RouterProvider router={router} />
-	</React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
